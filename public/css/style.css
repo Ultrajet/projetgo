@@ -1,5 +1,6 @@
-ul, li, a{
+footer li, footer a, footer ul {
     text-decoration: none;
     list-style-type: none;
     color: white !important;
+    margin-bottom: 0;
 }
