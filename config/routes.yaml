@@ -8,3 +8,18 @@ CGU:
     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     defaults:
       template: cgu.html.twig
+contact:
+    path: /contact
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+      template: contact.html.twig
+mentions legales:
+    path: /mentions_legales
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+      template: mentions_legales.html.twig
+plan du site:
+    path: /plan_du_site
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+      template: plan_du_site.html.twig
