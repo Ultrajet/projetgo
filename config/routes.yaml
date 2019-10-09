@@ -3,3 +3,8 @@ index:
     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     defaults:
       template: index.html.twig
+CGU:
+    path: /cgu
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+      template: cgu.html.twig
