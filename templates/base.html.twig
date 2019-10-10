@@ -1,31 +1,34 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!DOCTYPE html>
+<html lang="fr">
 
-    <!--OpenGraph-->
-    <meta name="Nom du site"
-        content="Connectez-vous et trouver des gens près de chez vous qui joue au même jeu que vous pour communiquer et jouer ensemble">
-    <meta property="og:title" content="Nom du site">
-    <meta property="og:type" content="Communautaire">
-    <meta property="og:url" content="#">
-    <meta property="og:image" content="#">
-
-    <!--Twitter Card-->
-    <meta name="twitter:card" content="Nom du site">
-    <meta name="twitter:site" content="???">
-    <meta name="twitter:creator" content="@sylviemorin">
-    <meta name="twitter:creator" content="@quentinlagadou">
-    <meta name="twitter:title" content="???">
-    <meta name="twitter:description"
-        content="Connectez-vous et trouver des gens près de chez vous qui joue au même jeu que vous pour communiquer et jouer ensemble">
-    <meta name="twitter:image" content="#">
-
-    <link rel="stylesheet" href="css/style.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+        <!--OpenGraph-->
+        <meta name="Nom du site"
+            content="Connectez-vous et trouver des gens près de chez vous qui joue au même jeu que vous pour communiquer et jouer ensemble">
+        <meta property="og:title" content="Nom du site">
+        <meta property="og:type" content="Communautaire">
+        <meta property="og:url" content="#">
+        <meta property="og:image" content="#">
+    
+        <!--Twitter Card-->
+        <meta name="twitter:card" content="Nom du site">
+        <meta name="twitter:site" content="???">
+        <meta name="twitter:creator" content="@sylviemorin">
+        <meta name="twitter:creator" content="@quentinlagadou">
+        <meta name="twitter:title" content="???">
+        <meta name="twitter:description"
+            content="Connectez-vous et trouver des gens près de chez vous qui joue au même jeu que vous pour communiquer et jouer ensemble">
+        <meta name="twitter:image" content="#">
+    <link rel="stylesheet" href={{ asset ('/css/style.css') }}>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <title>Projet Go</title>
+    <title>{% block title %}Logo + Titre su site{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
 </head>
 
 <body>
@@ -66,8 +69,7 @@
         </div>
     </nav>
 
-
-
+    {% block body %}{% endblock %}
 
     <footer>
         <ul class="bg-dark text-center fixed-bottom list-unstyled">
@@ -82,7 +84,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    {% block javascripts %}{% endblock %}
 </body>
 
 </html>
