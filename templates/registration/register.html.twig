@@ -1,16 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Register{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/inscription.css')}}">{% endblock %}
 
 {% block body %}
-    <h1>Inscription 😎😎😎</h1>
+<div class="container">
+    <h1 class="text-center">Inscription</h1>
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+    {{ form_row(registrationForm.username) }}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.mot_de_passe) }}
+    {{ form_row(registrationForm.code_postal) }}
+    {{ form_row(registrationForm.ville) }}
+    {{ form_row(registrationForm.agreeTerms) }}
 
-        <button class="btn">Terminer l'inscription</button>
+    <button class="btn btn-primary d-block col-8 mx-auto">Terminer l'inscription</button>
     {{ form_end(registrationForm) }}
+</div>
 {% endblock %}
