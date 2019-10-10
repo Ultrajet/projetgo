@@ -22,5 +22,45 @@ button {
 }
 
 .fas{
-    color: white;
+    color: #fefcbf;
 }
+
+/* ---- BOUTTON ---- */
+
+.geoloc {
+    margin-top: 10px !important;
+    background: #2a6fdb !important;
+}
+
+/* ---- PRESENTATION ---- */
+.presentation{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 30vh;
+    background: rgba(128, 128, 128, 0.678);
+    color: #48d6d2;
+    font-size: 1.5em;
+    border-radius: 5px;
+}
+
+/* ---- CHANGELOG ---- */
+.changelog{
+    margin-bottom: 10px;
+    height: 30vh;
+    background: grey;
+    color: white;
+    font-size: 2em;
+    border-radius: 5px;
+}
+
+/* ---- CAROUSEL ---- */
+.carousel-indicators li{
+    color: black !important;
+}
+
+.carousel{
+    margin-bottom: 60px;
+    margin-top: 10px;
+}
+
+

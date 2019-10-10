@@ -3,6 +3,84 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-<h1>Hello {{ controller_name }}! ✅</h1>
-<a href="{{path('inscription')}}">Inscription</a>
+<div class="container">
+    <!--BOUTON CANTRAL OU NOM DU JOUEUR-->
+    <button type="button" class="geoloc btn btn-lg btn-block"><a href="#">ME GEOLOCALISER</a></button>
+
+    <!--PRESENTATION DU SITE SOUS FORME DE CARD-->
+    <div class="presentation text-center">
+        <p>Ici vous pouvez trouvez des compatriotes sur vos jeux en RA préféré !<br>
+        Connectez-vous et chercher autour de vous des joueurs et peut-etre de futur amis avec qui jouer !</p>
+    </div>
+
+    <!--CHANGELOG DU SITE-->
+    <div class="changelog text-center">
+        <p>Le site ----- prend forme et avance doucement.<br>
+        La mise en place est lancer !!</p>
+    </div>
+
+    <!--CARROUSEL AVEC CARD-->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="card mb-3">
+                    <img src="/images/ingress.jpg" class="card-img-top" alt="ingress">
+                    <div class="card-body">
+                        <h5 class="card-title">INGRESS</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content.</p>
+                        <a class="card-text" href="#"><small class="text-muted"></small></a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card mb-3">
+                    <img src="/images/ingress.jpg" class="card-img-top" alt="ingress">
+                    <div class="card-body">
+                        <h5 class="card-title">MINECRAFT EARTH</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content.</p>
+                        <a class="card-text" href="#"><small class="text-muted"></small></a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card mb-3">
+                    <img src="/images/ingress.jpg" class="card-img-top" alt="ingress">
+                    <div class="card-body">
+                        <h5 class="card-title">POKEMON GO</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content.</p>
+                        <a class="card-text" href="#"><small class="text-muted"></small></a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card mb-3">
+                    <img src="/images/ingress.jpg" class="card-img-top" alt="ingress">
+                    <div class="card-body">
+                        <h5 class="card-title">WIZARD UNIT</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content.</p>
+                        <a class="card-text" href="#"><small class="text-muted"></small></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
 {% endblock %}
