@@ -1,6 +1,26 @@
-footer li, footer a, footer ul {
-    text-decoration: none;
-    list-style-type: none;
+/* ---- GENERAL ---- */
+
+ul, li{
+    list-style: none !important;
     color: white !important;
-    margin-bottom: 0;
+    margin-bottom: 0rem !important;
+}
+
+a{
+    text-decoration: none !important;
+    color: white !important;
+}
+
+/* ---- NAVBAR ---- */
+
+button, .navbar-dark:focus, .collapsed{
+    border: none !important;
+}
+
+button {
+    outline: none !important;
+}
+
+.fas{
+    color: white;
 }
