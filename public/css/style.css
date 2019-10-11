@@ -34,23 +34,23 @@ button {
 
 /* ---- PRESENTATION ---- */
 .presentation{
-    margin-bottom: 10px;
-    margin-top: 10px;
     height: 30vh;
-    background: rgba(128, 128, 128, 0.678);
-    color: #48d6d2;
-    font-size: 1.5em;
+    color: #122c91;
     border-radius: 5px;
+    width: 50%;
+}
+
+img{
+    width: 50%;
 }
 
 /* ---- CHANGELOG ---- */
 .changelog{
-    margin-bottom: 10px;
     height: 30vh;
     background: grey;
-    color: white;
-    font-size: 2em;
+    color: #48d6d2;
     border-radius: 5px;
+    width: 50%;
 }
 
 /* ---- CAROUSEL ---- */
