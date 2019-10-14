@@ -25,35 +25,27 @@ button {
     color: #fefcbf;
 }
 
-/* ---- BOUTTON ---- */
+/* ---- CHANGELOG ---- */
+.changelog{
+    color: #122c91;
+}
 
+/* ---- PRESENTATION ---- */
+.presentation{
+    color: #122c91;
+}
+
+/* ---- BOUTTON ---- */
 .geoloc {
     margin-top: 10px !important;
     background: #2a6fdb !important;
 }
 
-/* ---- PRESENTATION ---- */
-.presentation{
-    height: 30vh;
-    color: #122c91;
-    border-radius: 5px;
-    width: 50%;
+/* ---- CAROUSEL 2 ---- */
+h4 {
+    color: #122c91 !important;
 }
 
-img{
-    width: 50%;
-}
-
-/* ---- CHANGELOG ---- */
-.changelog{
-    height: 30vh;
-    background: grey;
-    color: #48d6d2;
-    border-radius: 5px;
-    width: 50%;
-}
-
-/* ---- CAROUSEL ---- */
 .carousel-indicators li{
     color: black !important;
 }
