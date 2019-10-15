@@ -43,11 +43,6 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $code_postal;
-
-    /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $ville;
@@ -153,18 +148,6 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getCodePostal(): ?string
-    {
-        return $this->code_postal;
-    }
-
-    public function setCodePostal(?string $code_postal): self
-    {
-        $this->code_postal = $code_postal;
 
         return $this;
     }

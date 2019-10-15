@@ -5,13 +5,13 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
+use App\Service\GenerateurCoordonnees;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistrationController extends AbstractController
@@ -19,7 +19,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/inscription", name="inscription")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator, GenerateurCoordonnees $generateurCoordonnees): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -37,20 +37,24 @@ class RegistrationController extends AbstractController
             // on donne par défaut le rôle ROLE_USER à un nouveau membre
             $user->setRoles(['ROLE_USER']);
 
-            // $entityManager = $this->getDoctrine()->getManager();
-            // $entityManager->persist($user);
-            // $entityManager->flush();
+            $ville = $form->get('ville')->getData();
+            $coordonnees = $generateurCoordonnees->generer($ville);
+            $user->setCoordonnees($coordonnees);
 
-            // return $guardHandler->authenticateUserAndHandleSuccess(
-            //     $user,
-            //     $request,
-            //     $authenticator,
-            //     'main' // firewall name in security.yaml
-            // );
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $guardHandler->authenticateUserAndHandleSuccess(
+                $user,
+                $request,
+                $authenticator,
+                'main' // firewall name in security.yaml
+            );
         }
 
         return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
+            'registrationForm' => $form->createView()
         ]);
     }
 
@@ -59,11 +63,6 @@ class RegistrationController extends AbstractController
      */
     public function testCoordonnees()
     {
-        // if ($form->get('code_postal') && $form->get('ville')) { 
-        // $cp = $form->get('code_postal')->getData();
-        // $ville = $form->get('ville')->getData();
-        // }
-
         $client = HttpClient::create();
         $cp = "31000";
         $ville = "Toulouse";

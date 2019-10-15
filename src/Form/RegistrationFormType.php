@@ -50,15 +50,6 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('code_postal', IntegerType::class, array(
-                'required' => false,
-                'constraints' => array(
-                    new Length(array(
-                        'min' => 5,
-                        'max' => 5,
-                    ))
-                )
-            ))
             ->add('ville', TextType::class, array(
                 'required' => false,
                 'constraints' => array(
