@@ -5,12 +5,14 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -35,22 +37,45 @@ class RegistrationController extends AbstractController
             // on donne par défaut le rôle ROLE_USER à un nouveau membre
             $user->setRoles(['ROLE_USER']);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            // $entityManager = $this->getDoctrine()->getManager();
+            // $entityManager->persist($user);
+            // $entityManager->flush();
 
-            // do anything else you need here, like send an email
-
-            return $guardHandler->authenticateUserAndHandleSuccess(
-                $user,
-                $request,
-                $authenticator,
-                'main' // firewall name in security.yaml
-            );
+            // return $guardHandler->authenticateUserAndHandleSuccess(
+            //     $user,
+            //     $request,
+            //     $authenticator,
+            //     'main' // firewall name in security.yaml
+            // );
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/test000", name="test coordonnées")
+     */
+    public function testCoordonnees()
+    {
+        // if ($form->get('code_postal') && $form->get('ville')) { 
+        // $cp = $form->get('code_postal')->getData();
+        // $ville = $form->get('ville')->getData();
+        // }
+
+        $client = HttpClient::create();
+        $cp = "31000";
+        $ville = "Toulouse";
+        $request = $client->request("GET", "https://nominatim.openstreetmap.org/search.php?postcode=$cp&city=$ville&format=json", [
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ]
+        ])->getContent();
+
+        $json = json_decode($request);
+
+        return new Response("<pre>" . $json[0]->lat . ", " . $json[0]->lon . "</pre>");
+        // return new Response("<pre>$request</pre>");
     }
 }

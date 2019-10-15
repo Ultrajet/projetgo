@@ -62,6 +62,11 @@ class User implements UserInterface
      */
     private $userJeux;
 
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $coordonnees;
+
     public function __construct()
     {
         $this->userJeux = new ArrayCollection();
@@ -215,6 +220,18 @@ class User implements UserInterface
                 $userJeux->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCoordonnees(): ?string
+    {
+        return $this->coordonnees;
+    }
+
+    public function setCoordonnees(?string $coordonnees): self
+    {
+        $this->coordonnees = $coordonnees;
 
         return $this;
     }
