@@ -11,7 +11,23 @@ a{
     color: white !important;
 }
 
+h4, h5 {
+    color: #2c698d !important;
+}
+
+p{
+    color: dimgray;
+}
+
+.essaie{
+    height: 30vh;
+    background-image: linear-gradient(to right top, #d4b8d0, #bba7c6, #a097bb, #8289af, #617ba2, #4d83a7, #368aa6, #2490a0, #4aaca2, #7fc59e, #bbdb9c, #fbeda5);
+}
+
 /* ---- NAVBAR ---- */
+.navbar, .footer{
+    background: black;
+}
 
 button, .navbar-dark:focus, .collapsed{
     border: none !important;
@@ -22,31 +38,27 @@ button {
 }
 
 .fas{
-    color: #fefcbf;
+    color: #fbeda5;
 }
 
 /* ---- CHANGELOG ---- */
-.changelog{
-    color: #122c91;
-}
+
 
 /* ---- PRESENTATION ---- */
-.presentation{
-    color: #122c91;
-}
+
 
 /* ---- BOUTTON ---- */
 .geoloc {
     margin-top: 10px !important;
-    background: #2a6fdb !important;
+    background: #2c698d !important;
+}
+
+.geoloc a{
+    color: #fbeda5 !important;
 }
 
 /* ---- CAROUSEL 2 ---- */
-h4 {
-    color: #122c91 !important;
-}
-
-.carousel-indicators li{
+ol {
     color: black !important;
 }
 
@@ -55,4 +67,18 @@ h4 {
     margin-top: 10px;
 }
 
+.card-body a small{
+    background: #2c698d !important;
+    color: #fbeda5 !important;
+    padding: 0.7em;
+    border-radius: 5px;
+    font-size: 0.7em;
+}
 
+.card-title{
+    font-size: 1.5em;
+}
+
+.card-body p {
+    font-size: 1.2em;
+}
