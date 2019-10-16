@@ -1,4 +1,4 @@
-/* ---- GENERAL ---- */
+/* ---- GENERAL BASE ET INDEX ---- */
 
 ul, li{
     list-style: none !important;
@@ -11,7 +11,7 @@ a{
     color: white !important;
 }
 
-h4, h5 {
+h4, h5, h2 {
     color: #2c698d !important;
 }
 
@@ -82,3 +82,24 @@ ol {
 .card-body p {
     font-size: 1.2em;
 }
+
+/************************************************************************************************************************/
+
+/* ---- GENERAL FEUILLE ---- */
+.lml, .cgu{
+    margin-bottom: 35%;
+}
+
+/* ---- FEUILLE DES MENTIONS LEGALES ---- */
+
+
+/* ---- FEUILLE DES CGU ---- */
+.cgu ul{
+    list-style: circle !important;
+    color: dimgray !important;
+}
+
+.cgu ul li{
+    color: dimgray !important;
+}
+/* ---- FEUILLE DU PLAN DU SITE ---- */
