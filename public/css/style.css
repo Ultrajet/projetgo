@@ -1,12 +1,16 @@
+/**********************************************************************
+                        BASE ET INDEX
+***********************************************************************/
+
 /* ---- GENERAL BASE ET INDEX ---- */
 
-ul, li{
+.navbar ul, .navbar li, footer ul, footer li{
     list-style: none !important;
     color: white !important;
     margin-bottom: 0rem !important;
 }
 
-a{
+.navbar a, footer a{
     text-decoration: none !important;
     color: white !important;
 }
@@ -23,6 +27,10 @@ p{
     height: 30vh;
     background-image: linear-gradient(to right top, #d4b8d0, #bba7c6, #a097bb, #8289af, #617ba2, #4d83a7, #368aa6, #2490a0, #4aaca2, #7fc59e, #bbdb9c, #fbeda5);
 }
+
+/**********************************************************************
+                            INDEX
+***********************************************************************/
 
 /* ---- NAVBAR ---- */
 .navbar, .footer{
@@ -63,7 +71,7 @@ ol {
 }
 
 .carousel{
-    margin-bottom: 60px;
+    margin-bottom: 35%;
     margin-top: 10px;
 }
 
@@ -83,23 +91,23 @@ ol {
     font-size: 1.2em;
 }
 
-/************************************************************************************************************************/
+/**********************************************************************
+                MENTIONS LEGALES / CGU / PLAN DU SITE
+***********************************************************************/
 
 /* ---- GENERAL FEUILLE ---- */
-.lml, .cgu{
-    margin-bottom: 35%;
+.lml, .cgu, .pds{
+    margin-bottom: 40%;
 }
 
 /* ---- FEUILLE DES MENTIONS LEGALES ---- */
-
+.lml i{
+    color: black;
+}
 
 /* ---- FEUILLE DES CGU ---- */
-.cgu ul{
-    list-style: circle !important;
-    color: dimgray !important;
+.cgu i{
+    color: black;
 }
 
-.cgu ul li{
-    color: dimgray !important;
-}
 /* ---- FEUILLE DU PLAN DU SITE ---- */
