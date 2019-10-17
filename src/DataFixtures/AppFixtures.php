@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Jeu;
 use App\Entity\User;
 use App\Entity\UserJeu;
+use App\Service\GenerateurCoordonnees;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -12,10 +13,12 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AppFixtures extends Fixture
 {
     private $encoder;
+    private $generateurCoordonnees;
 
-    public function __construct(UserPasswordEncoderInterface $encoder)
+    public function __construct(UserPasswordEncoderInterface $encoder, GenerateurCoordonnees $generateurCoordonnees)
     {
         $this->encoder = $encoder;
+        $this->generateurCoordonnees = $generateurCoordonnees;
     }
 
     public function load(ObjectManager $manager)
@@ -55,14 +58,11 @@ class AppFixtures extends Fixture
 
             // générer des localisations réalistes
             if ($i < 4) {
-                $user->setCodePostal("13001");
-                $user->setVille("Marseille");
+                $ville = "Marseille";
             } elseif ($i < 8) {
-                $user->setCodePostal("69001");
-                $user->setVille("Lyon");
+                $ville = "Lyon";
             } else {
-                $user->setCodePostal("75001");
-                $user->setVille("Paris");
+                $ville = "Paris";
             }
 
             // créer entre un et trois UserJeu pour le User en cours
@@ -74,6 +74,9 @@ class AppFixtures extends Fixture
 
                 $manager->persist($userJeu);
             }
+            
+            $user->setVille($ville);
+            $user->setCoordonnees($this->generateurCoordonnees->generer($ville));
 
             $manager->persist($user);
         }

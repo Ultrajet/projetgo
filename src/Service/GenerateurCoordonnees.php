@@ -5,6 +5,7 @@ namespace App\Service;
 use Exception;
 use Symfony\Component\HttpClient\HttpClient;
 
+// ça c'est mon service perso "GenerateurCoordonnees", je vais mettre dedans des fonctions qu'on pourra réutiliser partout ailleurs dans le projet (voire même dans d'autres projets)
 class GenerateurCoordonnees
 {
     public function generer($ville)
@@ -24,7 +25,7 @@ class GenerateurCoordonnees
             return $json[0]->lat . ", " . $json[0]->lon;
             
         } catch (Exception $e) {
-            return $e->getmessage();
+            return false;
         }
     }
 }

@@ -6,7 +6,6 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
 use App\Service\GenerateurCoordonnees;
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,7 +29,7 @@ class RegistrationController extends AbstractController
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
-                    $form->get('mot_de_passe')->getData()
+                    $form->get('password')->getData()
                 )
             );
 
@@ -39,18 +38,23 @@ class RegistrationController extends AbstractController
 
             $ville = $form->get('ville')->getData();
             $coordonnees = $generateurCoordonnees->generer($ville);
-            $user->setCoordonnees($coordonnees);
+            if (!$coordonnees) {
+                // je veux que : on retourne sur la page d'inscription, avec les champs déjà remplis, et un jouli petit message "votre ville n'est pas correcte"
+                return $this->redirectToRoute('inscription');
+            } else {
+                $user->setCoordonnees($coordonnees);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
 
-            return $guardHandler->authenticateUserAndHandleSuccess(
-                $user,
-                $request,
-                $authenticator,
-                'main' // firewall name in security.yaml
-            );
+                return $guardHandler->authenticateUserAndHandleSuccess(
+                    $user,
+                    $request,
+                    $authenticator,
+                    'main' // firewall name in security.yaml
+                );
+            }
         }
 
         return $this->render('registration/register.html.twig', [
@@ -61,20 +65,15 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/test000", name="test coordonnées")
      */
-    public function testCoordonnees()
+    public function testCoordonnees(GenerateurCoordonnees $generateurCoordonnees)
     {
-        $client = HttpClient::create();
-        $cp = "31000";
-        $ville = "Toulouse";
-        $request = $client->request("GET", "https://nominatim.openstreetmap.org/search.php?postcode=$cp&city=$ville&format=json", [
-            'headers' => [
-                'Content-Type' => 'application/json'
-            ]
-        ])->getContent();
+        $ville = "Stéphane000";
+        $coordonnees = $generateurCoordonnees->generer($ville);
+        if (!$coordonnees) {
+            $coordonnees = "Erreur";
+        }
 
-        $json = json_decode($request);
-
-        return new Response("<pre>" . $json[0]->lat . ", " . $json[0]->lon . "</pre>");
+        return new Response("<pre>" . $coordonnees . "</pre>");
         // return new Response("<pre>$request</pre>");
     }
 }
