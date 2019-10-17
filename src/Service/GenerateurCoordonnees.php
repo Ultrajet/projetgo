@@ -13,7 +13,7 @@ class GenerateurCoordonnees
         $client = HttpClient::create();
 
         try {
-            $json = $client->request("GET", "https://nominatim.openstreetmap.org/search.php?city=$ville&format=json", [
+            $json = $client->request("GET", "https://nominatim.openstreetmap.org/search.php?city=$ville&country=France&format=json", [
                 'headers' => [
                     'Content-Type' => 'application/json'
                 ]
