@@ -43,11 +43,6 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $code_postal;
-
-    /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $ville;
@@ -61,6 +56,11 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\UserJeu", mappedBy="user", orphanRemoval=true)
      */
     private $userJeux;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $coordonnees;
 
     public function __construct()
     {
@@ -82,7 +82,7 @@ class User implements UserInterface
         return (string) $this->username;
     }
 
-    public function setUsername(string $username): self
+    public function setUsername(?string $username): self
     {
         $this->username = $username;
 
@@ -152,18 +152,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCodePostal(): ?string
-    {
-        return $this->code_postal;
-    }
-
-    public function setCodePostal(?string $code_postal): self
-    {
-        $this->code_postal = $code_postal;
-
-        return $this;
-    }
-
     public function getVille(): ?string
     {
         return $this->ville;
@@ -215,6 +203,18 @@ class User implements UserInterface
                 $userJeux->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCoordonnees(): ?string
+    {
+        return $this->coordonnees;
+    }
+
+    public function setCoordonnees(?string $coordonnees): self
+    {
+        $this->coordonnees = $coordonnees;
 
         return $this;
     }

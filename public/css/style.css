@@ -1,8 +1,18 @@
 /**********************************************************************
                         BASE ET INDEX
 ***********************************************************************/
-
 /* ---- GENERAL BASE ET INDEX ---- */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+    margin: 20px 0;
+}
 
 .navbar ul, .navbar li, footer ul, footer li{
     list-style: none !important;

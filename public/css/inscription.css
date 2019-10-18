@@ -1,0 +1,7 @@
+form ul li {
+    color: initial !important;
+}
+label.required:after {
+    color: red;
+    content: " *";
+}
