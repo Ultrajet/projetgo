@@ -1,4 +1,7 @@
-/* ---- GENERAL ---- */
+/**********************************************************************
+                        BASE ET INDEX
+***********************************************************************/
+/* ---- GENERAL BASE ET INDEX ---- */
 
 body {
     display: flex;
@@ -11,18 +14,38 @@ main {
     margin: 20px 0;
 }
 
-ul, li{
+.navbar ul, .navbar li, footer ul, footer li{
     list-style: none !important;
     color: white !important;
     margin-bottom: 0rem !important;
 }
 
-a{
+.navbar a, footer a{
     text-decoration: none !important;
     color: white !important;
 }
 
+h4, h5, h2 {
+    color: #2c698d !important;
+}
+
+p{
+    color: dimgray;
+}
+
+.essaie{
+    height: 30vh;
+    background-image: linear-gradient(to right top, #d4b8d0, #bba7c6, #a097bb, #8289af, #617ba2, #4d83a7, #368aa6, #2490a0, #4aaca2, #7fc59e, #bbdb9c, #fbeda5);
+}
+
+/**********************************************************************
+                            INDEX
+***********************************************************************/
+
 /* ---- NAVBAR ---- */
+.navbar, .footer{
+    background: black;
+}
 
 button, .navbar-dark:focus, .collapsed{
     border: none !important;
@@ -33,5 +56,96 @@ button {
 }
 
 .fas{
-    color: white;
+    color: #fbeda5;
+}
+
+/* ---- CHANGELOG ---- */
+
+
+/* ---- PRESENTATION ---- */
+
+
+/* ---- BOUTTON ---- */
+.geoloc {
+    margin-top: 10px !important;
+    background: #2c698d !important;
+}
+
+.geoloc a{
+    color: #fbeda5 !important;
+}
+
+/* ---- CAROUSEL 2 ---- */
+ol {
+    color: black !important;
+}
+
+.carousel{
+    margin-bottom: 35%;
+    margin-top: 10px;
+}
+
+.card-body a small{
+    background: #2c698d !important;
+    color: #fbeda5 !important;
+    padding: 0.7em;
+    border-radius: 5px;
+    font-size: 0.7em;
+}
+
+.card-title{
+    font-size: 1.5em;
+}
+
+.card-body p {
+    font-size: 1.2em;
+}
+
+/**********************************************************************
+                MENTIONS LEGALES / CGU / PLAN DU SITE
+***********************************************************************/
+
+/* ---- GENERAL FEUILLE ---- */
+.lml, .cgu, .pds{
+    margin-bottom: 40%;
+}
+
+/* ---- FEUILLE DES MENTIONS LEGALES ---- */
+.lml i{
+    color: black;
+}
+
+/* ---- FEUILLE DES CGU ---- */
+.cgu i{
+    color: black;
+}
+
+.cgu svg{
+    fill: black;
+    width: 1.5vh;
+    height: 1.5vh;
+   }
+
+/* ---- FEUILLE DU PLAN DU SITE ---- */
+.pds svg{
+ fill: black;
+ width: 1.5vh;
+ height: 1.5vh;
+}
+
+.accueil{
+    color: dimgrey !important;
+}
+
+.footer{
+    background: transparent !important;
+    color: dimgrey !important;
+}
+
+.pds li{
+    list-style: none;
+}
+
+.pds a{
+    color: dimgrey !important;
 }
