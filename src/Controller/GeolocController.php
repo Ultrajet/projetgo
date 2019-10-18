@@ -15,7 +15,12 @@ class GeolocController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(User::class);
 
-        $users = $repository->findall();
+        $users = $repository->findAll();
+
+        // foreach ($users as $user) {
+        //     print_r($user->getCoordonnees() . '<br>');
+        // }
+        // exit;
 
         return $this->render('geoloc/index.html.twig', [
             'users' => $users
