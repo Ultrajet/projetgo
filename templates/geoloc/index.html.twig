@@ -1,20 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GeolocController!{% endblock %}
+{% block title %}Géolocalisation{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/geolocalisation.css')}}">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div id="mapid"></div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/projetgo/src/Controller/GeolocController.php'|file_link(0) }}">src/Controller/GeolocController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/projetgo/templates/geoloc/index.html.twig'|file_link(0) }}">templates/geoloc/index.html.twig</a></code></li>
-    </ul>
+    {% for user in users %}
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            let array = '{{user.coordonnees}}'.split(", ");
+            let lat = parseFloat(array[0]);
+            let lon = parseFloat(array[1]);
+            // console.log(lat + ", " + lon);
+            var marker = L.marker([lat, lon]).addTo(mymap);
+            marker.bindPopup('{{user.username}}');
+        });
+    </script>
+    {% endfor %}
+
 </div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+<script>
+    var mymap = L.map('mapid').setView([48.950037, 1.931647], 4);
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoidWx0cmFqZXQiLCJhIjoiY2sxbHl1NzFiMGE1aDNkdGNlNWQ5aDRuYSJ9.Jj2x03vpcxH5__ZUuD4rsA'
+    }).addTo(mymap);
+</script>
 {% endblock %}

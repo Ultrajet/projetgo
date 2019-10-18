@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\User;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GeolocController extends AbstractController
 {
@@ -12,8 +13,12 @@ class GeolocController extends AbstractController
      */
     public function index()
     {
+        $repository = $this->getDoctrine()->getRepository(User::class);
+
+        $users = $repository->findall();
+
         return $this->render('geoloc/index.html.twig', [
-            'controller_name' => 'GeolocController',
+            'users' => $users
         ]);
     }
 }
