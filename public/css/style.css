@@ -110,4 +110,32 @@ ol {
     color: black;
 }
 
+.cgu svg{
+    fill: black;
+    width: 1.5vh;
+    height: 1.5vh;
+   }
+
 /* ---- FEUILLE DU PLAN DU SITE ---- */
+.pds svg{
+ fill: black;
+ width: 1.5vh;
+ height: 1.5vh;
+}
+
+.accueil{
+    color: dimgrey !important;
+}
+
+.footer{
+    background: transparent !important;
+    color: dimgrey !important;
+}
+
+.pds li{
+    list-style: none;
+}
+
+.pds a{
+    color: dimgrey !important;
+}
