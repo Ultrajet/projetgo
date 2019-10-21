@@ -103,6 +103,63 @@ ol {
 }
 
 /**********************************************************************
+                            PROFIL
+***********************************************************************/
+.image img{
+    height: 10vh;
+}
+
+.infos_perso{
+    font-size: 0.5em;
+    border: 1px solid #2c698d;
+    height: auto;
+}
+
+.text_descriptif{
+    border: 1px solid #2c698d;
+    height: 10vh;
+}
+
+.jeux{
+    border: 1px solid #2c698d;
+    height: 10vh;
+}
+
+.jeux p{
+    font-size: 0.5em;
+}
+
+.profil button{
+    background: #2c698d !important;
+    color: #fbeda5 !important;
+}
+
+/**********************************************************************
+                            CONTACT
+***********************************************************************/
+.container h1{
+    color: #2c698d;
+}
+
+.contact button, .connectez_vous button{
+    background: #2c698d !important;
+    color: #fbeda5 !important;
+}
+
+.form-control{
+    border: 1px solid #2c698d !important;
+    box-shadow: none;
+}
+
+.form-control:focus{
+    box-shadow: none !important;
+}
+
+.contact label{
+    color: dimgrey;
+}
+
+/**********************************************************************
                 MENTIONS LEGALES / CGU / PLAN DU SITE
 ***********************************************************************/
 
@@ -149,30 +206,7 @@ ol {
     color: dimgrey !important;
 }
 
-/**********************************************************************
-                            CONTACT
-***********************************************************************/
-.container h1{
-    color: #2c698d;
-}
 
-.contact button, .connectez_vous button{
-    background: #2c698d !important;
-    color: #fbeda5 !important;
-}
-
-.form-control{
-    border: 1px solid #2c698d !important;
-    box-shadow: none;
-}
-
-.form-control:focus{
-    box-shadow: none !important;
-}
-
-.contact label{
-    color: dimgrey;
-}
 
 /******************************************************************************************************************************************************/
 
