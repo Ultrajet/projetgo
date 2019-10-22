@@ -26,7 +26,6 @@
     <link rel="stylesheet" href={{ asset ('/css/style.css') }}>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>{% block title %}Logo + Titre su site{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
 </head>
@@ -52,7 +51,7 @@
                     <a class="nav-link" href="{{path('deconnexion')}}">Déconnexion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Géolocalisation</a>
+                    <a class="nav-link" href="{{path('geoloc')}}">Géolocalisation</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>

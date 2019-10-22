@@ -40,14 +40,16 @@ class AppFixtures extends Fixture
         $twd->setNom('The Walking Dead: Our World');
         $manager->persist($twd);
 
-        $minecraft = new Jeu();
-        $minecraft->setNom('Minecraft Earth');
-        $manager->persist($minecraft);
+        // $minecraft = new Jeu();
+        // $minecraft->setNom('Minecraft Earth');
+        // $manager->persist($minecraft);
 
-        $jeux = [$ingress, $pgo, $wizards, $twd, $minecraft];
+        $jeux = [$ingress, $pgo, $wizards, $twd];
+
+        $villes = ['Marseille', 'Paris', 'Toulon', 'Lyon', 'Toulouse', 'Nice', 'Montpellier', 'Rennes', 'Lille', 'Nantes'];
 
         // créer 10 utilisateurs
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $user = new User();
             $user->setUsername("Jean-Michemuche$i");
             $user->setRoles(["ROLE_USER"]);
@@ -57,16 +59,16 @@ class AppFixtures extends Fixture
             $user->setEmail("mail$i@mail.fr");
 
             // générer des localisations réalistes
-            if ($i < 4) {
-                $ville = "Marseille";
-            } elseif ($i < 8) {
-                $ville = "Lyon";
-            } else {
-                $ville = "Paris";
-            }
+            // if ($i < 4) {
+            //     $ville = "Marseille";
+            // } elseif ($i < 8) {
+            //     $ville = "Lyon";
+            // } else {
+            //     $ville = "Paris";
+            // }
 
             // créer entre un et trois UserJeu pour le User en cours
-            for ($j = 0; $j < rand(1, 3); $j++) {
+            for ($j = 0; $j < rand(1, 4); $j++) {
                 $userJeu = new UserJeu;
                 $userJeu->setUser($user);
                 // $userJeu->setJeu($jeux[array_rand($jeux)]); ---> risque de générer plusieurs fois le même UserJeu
@@ -74,9 +76,11 @@ class AppFixtures extends Fixture
 
                 $manager->persist($userJeu);
             }
+
+            $userVille = $villes[array_rand($villes)];
             
-            $user->setVille($ville);
-            $user->setCoordonnees($this->generateurCoordonnees->generer($ville));
+            $user->setVille($userVille);
+            $user->setCoordonnees($this->generateurCoordonnees->generer($userVille));
 
             $manager->persist($user);
         }
