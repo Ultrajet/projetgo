@@ -10,22 +10,24 @@ class GenerateurCoordonnees
 {
     public function generer($ville)
     {
-        $client = HttpClient::create();
+        if (!is_null($ville)) {
+            $client = HttpClient::create();
 
-        try {
-            $json = $client->request("GET", "https://nominatim.openstreetmap.org/search.php?city=$ville&country=France&format=json", [
-                'headers' => [
-                    'Content-Type' => 'application/json'
-                ]
-            ])->getContent();
-
-            $json = json_decode($json);
-
-            // $user->setCoordonnees("Bonsoir");
-            return $json[0]->lat . ", " . $json[0]->lon;
-            
-        } catch (Exception $e) {
-            return false;
+            try {
+                $json = $client->request("GET", "https://nominatim.openstreetmap.org/search.php?city=$ville&country=France&format=json", [
+                    'headers' => [
+                        'Content-Type' => 'application/json'
+                    ]
+                ])->getContent();
+    
+                $json = json_decode($json);
+    
+                // $user->setCoordonnees("Bonsoir");
+                return $json[0]->lat . ", " . $json[0]->lon;
+                
+            } catch (Exception $e) {
+                return false;
+            }
         }
     }
 }
