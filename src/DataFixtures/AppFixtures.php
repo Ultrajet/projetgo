@@ -33,11 +33,11 @@ class AppFixtures extends Fixture
         $manager->persist($pgo);
 
         $wizards = new Jeu();
-        $wizards->setNom('Harry Potter: Wizards Unite');
+        $wizards->setNom('Harry Potter : Wizards Unite');
         $manager->persist($wizards);
 
         $twd = new Jeu();
-        $twd->setNom('The Walking Dead: Our World');
+        $twd->setNom('The Walking Dead : Our World');
         $manager->persist($twd);
 
         // $minecraft = new Jeu();

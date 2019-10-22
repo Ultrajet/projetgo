@@ -45,11 +45,13 @@
             // console.log(json);
             $.each(json, (username, coordonnees) => {
                 // console.log(username + ': ' + coordonnees);
-                let array = coordonnees.split(", ");
-                let lat = parseFloat(array[0]);
-                let lon = parseFloat(array[1]);
-                let title = username;
-                addressPoints.push([lat, lon, title]);
+                if (coordonnees != null) {
+                    let array = coordonnees.split(", ");
+                    let lat = parseFloat(array[0]);
+                    let lon = parseFloat(array[1]);
+                    let title = username;
+                    addressPoints.push([lat, lon, title]);
+                }
             });
             for (var i = 0; i < addressPoints.length; i++) {
                 var a = addressPoints[i];
