@@ -7,7 +7,8 @@
 {% block body %}
 <div class="container">
     <h1 class="text-center pb-3 text-uppercase">Inscription</h1>
-    <p class="text-center rounded p-2 pb-3 font-weight-bold">Les champs précédés d'un astérisque <span class="text-danger">*</span> sont obligatoires.</p>
+    <p class="text-center rounded p-2 pb-3 font-weight-bold">Les champs précédés d'un astérisque <span
+            class="text-danger">*</span> sont obligatoires.</p>
 
     {{ form_start(registrationForm) }}
     {{ form_row(registrationForm.username, {'label': 'Pseudo'}) }}

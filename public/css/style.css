@@ -52,11 +52,6 @@ button {
     color: #fbeda5;
 }
 
-.essaie {
-    height: 30vh;
-    background-image: linear-gradient(to right top, #d4b8d0, #bba7c6, #a097bb, #8289af, #617ba2, #4d83a7, #368aa6, #2490a0, #4aaca2, #7fc59e, #bbdb9c, #fbeda5);
-}
-
 /**********************************************************************
                             INDEX
 ***********************************************************************/
@@ -106,27 +101,29 @@ ol {
                             PROFIL
 ***********************************************************************/
 .image img{
-    height: 10vh;
+    height: 30vh;
 }
 
 .infos_perso{
-    font-size: 0.5em;
+    font-size: 0.7em;
     border: 1px solid #2c698d;
     height: auto;
 }
 
 .text_descriptif{
     border: 1px solid #2c698d;
-    height: 10vh;
+    height: auto;
 }
 
 .jeux{
+    font-size: 0.7em;
     border: 1px solid #2c698d;
-    height: 10vh;
+    height: auto;
+    
 }
 
-.jeux p{
-    font-size: 0.5em;
+.jeux p, .text_descriptif p, .infos_perso p{
+    margin-bottom: 0rem !important;
 }
 
 .profil button{
