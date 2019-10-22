@@ -2,10 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\Jeu;
 use App\Entity\User;
 use App\Service\GenerateurCoordonnees;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
@@ -75,6 +77,13 @@ class RegistrationFormType extends AbstractType
                     new Callback([$this, 'validate'])
                 )
             ))
+            ->add('jeux', EntityType::class, [
+                'mapped' => false,
+                'class' => Jeu::class,
+                'choice_label' => 'nom',
+                'multiple' => true,
+                'expanded' => true,
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -92,7 +101,7 @@ class RegistrationFormType extends AbstractType
             $generateurCoordonnees = new GenerateurCoordonnees;
 
             if (!$generateurCoordonnees->generer($data)) {
-                $context->buildViolation("Cette ville n'est pas présente en BDD.")
+                $context->buildViolation("Le nom de cette ville n'a pas été reconnu.")
                     ->atPath('ville')
                     ->addViolation();
             }

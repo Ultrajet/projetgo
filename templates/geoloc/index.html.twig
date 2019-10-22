@@ -12,24 +12,20 @@
 {% endblock %}
 
 {% block body %}
-<div class="container">
-
-    <div id="mapid"></div>
-
-</div>
+<div id="mapid"></div>
 {% endblock %}
 
 {% block javascripts %}
 
 <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-    crossorigin=""></script>
+    crossorigin="SameSite=None"></script>
 
 <script src="{{asset('js/leaflet.markercluster.js')}}"></script>
 
 <script>
     // génération de la map, des tiles, du cluster de markers et de la variable qui accueille les coordonnées de tous les users
-    var mymap = L.map('mapid').setView([48.950037, 1.931647], 4);
+    var mymap = L.map('mapid').setView([48.950037, 1.931647], 6);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -39,38 +35,31 @@
     }).addTo(mymap);
 
     var markers = L.markerClusterGroup();
-    let addressPoints = ["test"];
-</script>
+    var addressPoints = [];
 
-<!-- boucle sur chaque user pour récupérer ses coordonnées et les push dans addressPoints -->
-<!-- TODO : trouver un autre moyen de faire communiquer PHP et JS, impossible pour le moment de récupérer correctement les coordonnées -->
-{% for user in users %}
-<script>
-    window.addEventListener("DOMContentLoaded", () => {
-        let array = '{{ user.coordonnees }}'.split(", ");
-        let lat = parseFloat(array[0]);
-        let lon = parseFloat(array[1]);
-        let title = '{{ user.username }}';
-
-        // console.log(lat + ", " + lon);
-        // var marker = L.marker([lat, lon]).addTo(mymap);
-
-        addressPoints.push([lat, lon, title]);
-    })
-</script>
-{% if user.id == 71 %}
-<script>
-    window.addEventListener("DOMContentLoaded", () => {
-        for (var i = 1; i < addressPoints.length; i++) {
-            var a = addressPoints[i];
-            var title = a[2];
-            var marker = L.marker(new L.LatLng(a[0], a[1]));
-            markers.addLayer(marker);
+    $.ajax({
+        type: 'GET',
+        url: "{{ path('apiUsers') }}",
+        dataType: 'json',
+        success: json => {
+            // console.log(json);
+            $.each(json, (username, coordonnees) => {
+                // console.log(username + ': ' + coordonnees);
+                let array = coordonnees.split(", ");
+                let lat = parseFloat(array[0]);
+                let lon = parseFloat(array[1]);
+                let title = username;
+                addressPoints.push([lat, lon, title]);
+            });
+            for (var i = 0; i < addressPoints.length; i++) {
+                var a = addressPoints[i];
+                var title = a[2];
+                var marker = L.marker(new L.LatLng(a[0], a[1])).bindPopup(title);
+                markers.addLayer(marker);
+            }
+            mymap.addLayer(markers);
         }
-        mymap.addLayer(markers);
-    })
+    });
 </script>
-{% endif %}
-{% endfor %}
 
 {% endblock %}
