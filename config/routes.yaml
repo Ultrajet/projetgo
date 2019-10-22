@@ -18,3 +18,8 @@ plan du site:
     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     defaults:
       template: plan_du_site.html.twig
+profil:
+    path: /profil
+    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+    defaults:
+      template: profil.html.twig

@@ -3,7 +3,33 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-    <div class="container">
-        
-    </div>
+<div class="container">
+    <h2 class="text-uppercase text-center pb-3">Nous contacter</h2>
+    <form class="contact">
+        <div class="form-group">
+            <label for="pseudo">Pseudo</label>
+            <input type="pseudo" class="form-control" id="pseudo">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+            <label for="objet_message">Objet du message</label>
+            <input type="objet_message" class="form-control" id="objet_message">
+            <!-- <select class="form-control" id="Select">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select> -->
+        </div>
+        <div class="form-group">
+            <label for="Textarea">Votre message</label>
+            <textarea class="form-control" id="Textarea" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
 {% endblock %}

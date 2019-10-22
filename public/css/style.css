@@ -1,8 +1,8 @@
 /**********************************************************************
-                        BASE ET INDEX
+                                BASE
 ***********************************************************************/
 
-/* ---- GENERAL BASE ET INDEX ---- */
+/* ---- GENERAL ---- */
 
 body {
     display: flex;
@@ -15,13 +15,13 @@ main {
     margin: 20px 0;
 }
 
-.navbar ul, .navbar li, footer ul, footer li {
+.base_navbar ul, .base_navbar li, .base_footer ul, .base_footer li {
     list-style: none !important;
     color: white !important;
     margin-bottom: 0rem !important;
 }
 
-.navbar a, footer a {
+.base_navbar a, .base_footer a {
     text-decoration: none !important;
     color: white !important;
 }
@@ -34,19 +34,10 @@ p {
     color: dimgray;
 }
 
-.essaie {
-    height: 30vh;
-    background-image: linear-gradient(to right top, #d4b8d0, #bba7c6, #a097bb, #8289af, #617ba2, #4d83a7, #368aa6, #2490a0, #4aaca2, #7fc59e, #bbdb9c, #fbeda5);
-}
-
-/**********************************************************************
-                            INDEX
-***********************************************************************/
-
 /* ---- NAVBAR ---- */
 
-.navbar, .footer {
-    background: black;
+.base_navbar, .base_footer {
+    background: black !important;
 }
 
 button, .navbar-dark:focus, .collapsed {
@@ -60,6 +51,10 @@ button {
 .fas {
     color: #fbeda5;
 }
+
+/**********************************************************************
+                            INDEX
+***********************************************************************/
 
 /* ---- CHANGELOG ---- */
 
@@ -103,6 +98,65 @@ ol {
 }
 
 /**********************************************************************
+                            PROFIL
+***********************************************************************/
+.image img{
+    height: 30vh;
+}
+
+.infos_perso{
+    font-size: 0.7em;
+    border: 1px solid #2c698d;
+    height: auto;
+}
+
+.text_descriptif{
+    border: 1px solid #2c698d;
+    height: auto;
+}
+
+.jeux{
+    font-size: 0.7em;
+    border: 1px solid #2c698d;
+    height: auto;
+    
+}
+
+.jeux p, .text_descriptif p, .infos_perso p{
+    margin-bottom: 0rem !important;
+}
+
+.profil button{
+    background: #2c698d !important;
+    color: #fbeda5 !important;
+}
+
+/**********************************************************************
+                            CONTACT
+***********************************************************************/
+.container h1{
+    color: #2c698d;
+}
+
+.contact button, .connectez_vous button{
+    background: #2c698d !important;
+    color: #fbeda5 !important;
+}
+
+.form-control{
+    border: 1px solid #2c698d !important;
+    box-shadow: none;
+}
+
+.form-control:focus{
+    box-shadow: none !important;
+}
+
+.contact label{
+    color: dimgrey;
+}
+
+/**********************************************************************
                 MENTIONS LEGALES / CGU / PLAN DU SITE
 ***********************************************************************/
 
@@ -110,35 +164,33 @@ ol {
 
 /* ---- FEUILLE DES MENTIONS LEGALES ---- */
 
-.lml i {
-    color: black;
+.lml svg {
+    fill: black;
+    width: 3vh;
+    height: 3vh;
 }
 
 /* ---- FEUILLE DES CGU ---- */
 
-.cgu i {
-    color: black;
-}
-
 .cgu svg {
     fill: black;
-    width: 1.5vh;
-    height: 1.5vh;
+    width: 2vh;
+    height: 2vh;
 }
 
 /* ---- FEUILLE DU PLAN DU SITE ---- */
 
 .pds svg {
     fill: black;
-    width: 1.5vh;
-    height: 1.5vh;
+    width: 2vh;
+    height: 2vh;
 }
 
 .accueil {
     color: dimgrey !important;
 }
 
-.footer {
+.pds .footer {
     background: transparent !important;
     color: dimgrey !important;
 }
@@ -150,3 +202,23 @@ ol {
 .pds a {
     color: dimgrey !important;
 }
+
+
+
+/******************************************************************************************************************************************************/
+
+/**********************************************************************
+                            MEDIA QUERIES
+***********************************************************************/
+
+/*-------------------------------------------------------------------
+            ------------------ NAVBAR -----------------
+-------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------
+            ------------------ FOOTER -----------------
+-------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------
+        --------- MENTIONS LEGALES / CGU / PLAN DU SITE ---------
+-------------------------------------------------------------------*/
