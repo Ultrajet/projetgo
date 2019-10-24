@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Jeu;
 use App\Entity\User;
+use App\Form\GeolocType;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GeolocController extends AbstractController
 {
@@ -14,7 +16,11 @@ class GeolocController extends AbstractController
      */
     public function index()
     {
-        return $this->render('geoloc/index.html.twig');
+        $form = $this->createForm(GeolocType::class);
+
+        return $this->render('geoloc/index.html.twig', [
+            'geolocForm' => $form->createView()
+        ]);
     }
 
     /**
@@ -26,6 +32,21 @@ class GeolocController extends AbstractController
         $users = $repository->findAll();
         foreach ($users as $user) {
             $output[$user->getUsername()] = $user->getCoordonnees();
+        }
+
+        return new JsonResponse($output);
+    }
+
+    /**
+     * @Route("/apitest/users/{jeu}", name="apiUsersGame")
+     */
+    public function apiUsersGame($jeu)
+    {
+        $repository = $this->getDoctrine()->getRepository(Jeu::class);        
+        $theJeu = $repository->find($jeu);
+        $userJeu = $theJeu->getUserJeux();
+        foreach ($userJeu as $user) {
+            $output[$user->getUser()->getUsername()] = $user->getUser()->getCoordonnees();
         }
 
         return new JsonResponse($output);

@@ -1,5 +1,8 @@
+main {
+    margin-bottom: 0;
+}
+
 #mapid {
-    width: 80vw;
     height: 80vh;
     margin: 0 auto;
 }

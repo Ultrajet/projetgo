@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\UserJeu;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
 use App\Service\GenerateurCoordonnees;
@@ -25,6 +26,8 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
@@ -36,44 +39,32 @@ class RegistrationController extends AbstractController
             // on donne par défaut le rôle ROLE_USER à un nouveau membre
             $user->setRoles(['ROLE_USER']);
 
+            $jeux = $form->get('jeux')->getData();
+            foreach ($jeux as $jeu) {
+                $userJeu = new UserJeu();
+                $userJeu
+                    ->setUser($user)
+                    ->setJeu($jeu);
+                $entityManager->persist($userJeu);
+            }
+
             $ville = $form->get('ville')->getData();
             $coordonnees = $generateurCoordonnees->generer($ville);
-            if (!$coordonnees) {
-                // je veux que : on retourne sur la page d'inscription, avec les champs déjà remplis, et un jouli petit message "votre ville n'est pas correcte"
-                return $this->redirectToRoute('inscription');
-            } else {
-                $user->setCoordonnees($coordonnees);
+            $user->setCoordonnees($coordonnees);
 
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($user);
-                $entityManager->flush();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
-                return $guardHandler->authenticateUserAndHandleSuccess(
-                    $user,
-                    $request,
-                    $authenticator,
-                    'main' // firewall name in security.yaml
-                );
-            }
+            return $guardHandler->authenticateUserAndHandleSuccess(
+                $user,
+                $request,
+                $authenticator,
+                'main' // firewall name in security.yaml
+            );
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView()
         ]);
-    }
-
-    /**
-     * @Route("/test000", name="test coordonnées")
-     */
-    public function testCoordonnees(GenerateurCoordonnees $generateurCoordonnees)
-    {
-        $ville = "Stéphane000";
-        $coordonnees = $generateurCoordonnees->generer($ville);
-        if (!$coordonnees) {
-            $coordonnees = "Erreur";
-        }
-
-        return new Response("<pre>" . $coordonnees . "</pre>");
-        // return new Response("<pre>$request</pre>");
     }
 }
