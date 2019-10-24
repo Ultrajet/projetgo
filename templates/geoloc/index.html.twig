@@ -27,44 +27,31 @@
 <script src="{{asset('js/leaflet.markercluster.js')}}"></script>
 
 <script>
-    // génération de la map, des tiles, du cluster de markers et de la variable qui accueille les coordonnées de tous les users
-    var mymap = L.map('mapid').setView([46.603354,1.8883335], 6);
+    function genererMarkers(json) {
+        // console.log(json);
+        $.each(json, (username, data) => {
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoidWx0cmFqZXQiLCJhIjoiY2sxbHl1NzFiMGE1aDNkdGNlNWQ5aDRuYSJ9.Jj2x03vpcxH5__ZUuD4rsA'
-    }).addTo(mymap);
+            let coordonnees = data.coordonnees;
+            let id = data.id;
 
-    var markers = L.markerClusterGroup();
-    var addressPoints = [];
-
-    $.ajax({
-        type: 'GET',
-        url: "{{ path('apiUsers') }}",
-        dataType: 'json',
-        success: json => {
-            // console.log(json);
-            $.each(json, (username, coordonnees) => {
-                // console.log(username + ': ' + coordonnees);
-                if (coordonnees != null) {
-                    let array = coordonnees.split(", ");
-                    let lat = parseFloat(array[0]);
-                    let lon = parseFloat(array[1]);
-                    let title = username;
-                    addressPoints.push([lat, lon, title]);
-                }
-            });
-            for (var i = 0; i < addressPoints.length; i++) {
-                var a = addressPoints[i];
-                var title = a[2];
-                var marker = L.marker(new L.LatLng(a[0], a[1])).bindPopup(title);
-                markers.addLayer(marker);
+            if (coordonnees != null) {
+                let array = coordonnees.split(", ");
+                let lat = parseFloat(array[0]);
+                let lon = parseFloat(array[1]);
+                let titleURL = "{{ path('profil', {id: 'id'}) }}";
+                titleURL = titleURL.replace("id", id);
+                let title = "<a href='" + titleURL + "' target='_blank'>" + username + "</a>";
+                addressPoints.push([lat, lon, title]);
             }
-            mymap.addLayer(markers);
+        });
+        for (var i = 0; i < addressPoints.length; i++) {
+            var a = addressPoints[i];
+            var title = a[2];
+            var marker = L.marker(new L.LatLng(a[0], a[1])).bindPopup(title);
+            markers.addLayer(marker);
         }
-    });
+        mymap.addLayer(markers);
+    }
 
     function handleClick(input) {
         // https://stackoverflow.com/questions/44269785/sending-value-with-path-via-ajax-symfony3-twig
@@ -81,27 +68,32 @@
                 markers.clearLayers();
                 addressPoints = [];
 
-                // console.log(json);
-                $.each(json, (username, coordonnees) => {
-                    // console.log(username + ': ' + coordonnees);
-                    if (coordonnees != null) {
-                        let array = coordonnees.split(", ");
-                        let lat = parseFloat(array[0]);
-                        let lon = parseFloat(array[1]);
-                        let title = username;
-                        addressPoints.push([lat, lon, title]);
-                    }
-                });
-                for (var i = 0; i < addressPoints.length; i++) {
-                    var a = addressPoints[i];
-                    var title = a[2];
-                    var marker = L.marker(new L.LatLng(a[0], a[1])).bindPopup(title);
-                    markers.addLayer(marker);
-                }
-                mymap.addLayer(markers);
+                genererMarkers(json);
             }
         });
     }
+
+    // génération de la map, des tiles, du cluster de markers et de la variable qui accueille les coordonnées de tous les users
+    var mymap = L.map('mapid').setView([46.603354, 1.8883335], 6);
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoidWx0cmFqZXQiLCJhIjoiY2sxbHl1NzFiMGE1aDNkdGNlNWQ5aDRuYSJ9.Jj2x03vpcxH5__ZUuD4rsA'
+    }).addTo(mymap);
+
+    var markers = L.markerClusterGroup();
+    var addressPoints = [];
+
+    $.ajax({
+        type: 'GET',
+        url: "{{ path('apiUsers') }}",
+        dataType: 'json',
+        success: json => {
+            genererMarkers(json)
+        }
+    });
 </script>
 
 {% endblock %}

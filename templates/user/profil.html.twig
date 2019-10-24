@@ -3,32 +3,55 @@
 {% block title %}Profil{% endblock %}
 
 {% block body %}
+
 <div class="container profil">
-    
-        <div class="image d-flex">
-            <img src="{{ asset('images/avatar01.png') }}" alt="avatar" class="img-thumbnail mx-auto">
-        </div>
-        <div class="infos_perso mt-5 p-2">
-            <p>PSEUDO : <br>
-                E-MAIL : <br>
-                MOT DE PASSE : <br>
-                VILLE : </p>
-        </div>
-    
-    <div class="text_descriptif mt-5 p-2">
 
+    <h1 class="display-4 text-center">{{ user.username }}</h1>
+    {% if user.ville is null %}
+    <small class="text-center d-block">Cet utilisateur n'a pas encore renseigné de ville.</small>
+    {% else %}
+    <h3 class="text-center">
+        {{ user.ville }}
+    </h3>
+    {% endif %}
+
+    <section class="mt-5 p-2">
+        <h5>Texte de présentation</h5>
+        <p>
+            {% if user.txtProfil is null %}
+            Cet utilisateur n'a pas encore renseigné de texte de présentation.
+            {% else %}
+            {{ user.txtProfil }}
+            {% endif %}
+        </p>
+    </section>
+
+    <section class="mt-5 p-2">
+        <h5>Liste de jeux</h5>
+        <p>
+            {% if user.userJeux|length > 0 %}
+            {% for userJeu in user.userJeux %}
+            <span>{{ userJeu.jeu.nom }}</span><br>
+            {% endfor %}
+            {% else %}
+            Cet utilisateur n'a pas encore renseigné de jeu.
+            {% endif %}
+        </p>
+    </section>
+
+    <section class="mt-5 p-2">
+            <h5>Conversations en cours</h5>
+            <p>Aucune pour le moment!</p>
+        </section>
+
+    <div class="button mt-3">
+        <button type="submit" class="btn col-12 mt-2">Modifier mon compte</button>
     </div>
-    <div class="jeux mt-5 p-2">
-        <p>Liste de vos jeux :</p>
+
+    <div class="button mt-3">
+        <button type="submit" class="btn col-12 mt-2">Contacter</button>
     </div>
-    <div class="button">
-        <button type="submit" class="btn col-12 mt-5">Ajouter un jeux</button> <br>
-        <button type="submit" class="btn col-12 mt-2">Supprimer un jeux</button>
-        <button type="submit" class="btn col-12 mt-2">Modifier le compte</button>
-        <button type="submit" class="btn col-12 mt-2">Supprimer le compte</button>
-    </div>
+
 </div>
-
-
 
 {% endblock %}
