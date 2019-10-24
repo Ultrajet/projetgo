@@ -50,11 +50,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('deconnexion')}}">Déconnexion</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{path('geoloc')}}">Géolocalisation</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{path('contact')}}">Contact</a>
+                    <a class="nav-link" href="{{path('profil')}}">Mon profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{path('geoloc')}}">Géolocalisation</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -69,6 +70,8 @@
     </nav>
 
     <main>
+        <h1 class="display-1 text-center">Walk & Meet</h1>
+
         {% block body %}{% endblock %}
     </main>
 
