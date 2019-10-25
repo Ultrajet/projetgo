@@ -14,6 +14,7 @@
 {% block body %}
 <div class="container">
     {{ form(geolocForm) }}
+    <p></p>
 </div>
 <div id="mapid"></div>
 {% endblock %}
@@ -64,7 +65,18 @@
             type: 'GET',
             url: path,
             dataType: 'json',
+            beforeSend: () => {
+                $("#mapid").css({
+                    'filter': 'blur(5px)',
+                    'transition': '100ms'
+                });
+            },
             success: json => {
+                $("#mapid").css({
+                    'filter': 'none',
+                    'transition': 'none'
+                });
+
                 markers.clearLayers();
                 addressPoints = [];
 

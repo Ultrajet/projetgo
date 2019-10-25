@@ -40,16 +40,18 @@
     </section>
 
     <section class="mt-5 p-2">
-            <h5>Conversations en cours</h5>
-            <p>Aucune pour le moment!</p>
-        </section>
+        <h5>Conversations en cours</h5>
+        <p>Aucune pour le moment!</p>
+    </section>
 
     <div class="button mt-3">
         <button type="submit" class="btn col-12 mt-2">Modifier mon compte</button>
     </div>
 
     <div class="button mt-3">
-        <button type="submit" class="btn col-12 mt-2">Contacter</button>
+        <a href="{{path('messagerie', {id: user.id})}}">
+            <button class="btn col-12 mt-2">Contacter</button>
+        </a>
     </div>
 
 </div>
