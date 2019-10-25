@@ -46,7 +46,7 @@ class GeolocController extends AbstractController
      */
     public function apiUsersGame($jeu)
     {
-        $repository = $this->getDoctrine()->getRepository(Jeu::class);        
+        $repository = $this->getDoctrine()->getRepository(Jeu::class);
         $theJeu = $repository->find($jeu);
         $userJeu = $theJeu->getUserJeux();
         

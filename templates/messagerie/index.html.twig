@@ -2,8 +2,52 @@
 
 {% block title %}Messagerie{% endblock %}
 
+{% block stylesheets %}
+
+<style>
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .messagerie-container {
+        min-height: 40vh;
+    }
+</style>
+
+{% endblock %}
+
 {% block body %}
-<div class="container border">
-    <h1>Ceci est la conversation avec l'utilisateur {{ id }}.</h1>
+<h1 class="text-center">{{ id }}.</h1>
+<div class="container border py-2 d-flex flex-column flex-grow-1">
+    <div class="messagerie-container flex-grow-1"></div>
+    {{ form_start(form) }}
+    {{ form_row(form.content) }}
+    <button class="btn btn-primary col-4 d-inline-block">Envoyer</button>
+    {{ form_end(form) }}
 </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    document.querySelector('form').addEventListener('submit', event => {
+        event.preventDefault();
+        let content = $('form input').val();
+        let data = {
+            form: $("form").serializeArray(),
+            userGet: "{{ id }}"
+        };
+        // console.log(content);
+
+        $.ajax({
+            url: "{{ path('postmessage') }}",
+            data: $("form").serializeArray(),
+            type: 'POST',
+            dataType: 'json',
+            success: json => {
+                console.log(json);
+            }
+        });
+    })
+</script>
 {% endblock %}
