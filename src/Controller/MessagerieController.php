@@ -37,13 +37,15 @@ class MessagerieController extends AbstractController
         $form = $this->createForm(MessageType::class, $message);
 
         $theReturn = '';
-        // $content = $form->get('content')->getData();
         $userPost = $this->getUser();
 
         $repository = $this->getDoctrine()->getRepository(User::class);
         $userGet = $repository->find($id);
 
         $form->handleRequest($request);
+
+        // return new JsonResponse($request->getContent());
+        // exit;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();

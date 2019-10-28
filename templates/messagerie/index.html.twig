@@ -16,6 +16,20 @@
         justify-content: flex-end;
         overflow: auto;
     }
+
+    p.get, p.post {
+        padding: 10px;
+        min-width: 15vw;
+        color: initial;
+    }
+
+    p.get {
+        background: #2C698D;
+    }
+
+    p.post {
+        background: #FBEDA5;
+    }
 </style>
 
 {% endblock %}
@@ -32,12 +46,12 @@
 
     {{ form_start(form) }}
     {{ form_row(form.content) }}
-
-    <label for="checkInterval">Activer le rafraichissement automatique</label>
-    <input type="checkbox" name="checkInterval" id="checkInterval" checked>
-
     <button class="btn btn-primary col-4 d-inline-block">Envoyer</button>
     {{ form_end(form) }}
+
+    <label for="checkInterval">Activer le rafraichissement automatique :
+        <input type="checkbox" name="checkInterval" id="checkInterval" checked>
+    </label>
 
 </div>
 
@@ -56,9 +70,9 @@
         let divDate = document.createElement('small');
 
         divMessage.className = message.userPost == "{{ id }}" ?
-            'align-self-start border'
+            'get align-self-start'
             :
-            'align-self-end border text-right'
+            'post align-self-end text-right'
             ;
         divDate.className = 'd-block';
 
@@ -100,7 +114,7 @@
             type: 'POST',
             dataType: 'json',
             success: json => {
-                // console.log(json);
+                console.log(json);
                 $('form input').val('');
             }
         });
@@ -125,8 +139,8 @@
         }
     })
 
-    let myInterval = setInterval(getMessages, 5000);
+    // let myInterval = setInterval(getMessages, 5000);
 
-    getMessages();
+    // getMessages();
 </script>
 {% endblock %}
