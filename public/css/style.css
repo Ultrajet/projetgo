@@ -15,13 +15,12 @@ main {
     margin: 20px 0;
 }
 
-.base_navbar ul, .base_navbar li, .base_footer ul, .base_footer li {
+.base_navbar ul, .base_navbar li {
     list-style: none !important;
-    color: white !important;
     margin-bottom: 0rem !important;
 }
 
-.base_navbar a, .base_footer a {
+.base_navbar a {
     text-decoration: none !important;
     color: white !important;
 }
@@ -36,7 +35,7 @@ p {
 
 /* ---- NAVBAR ---- */
 
-.base_navbar, .base_footer {
+.base_navbar {
     background: black !important;
 }
 
@@ -52,49 +51,122 @@ button {
     color: #fbeda5;
 }
 
+/* ---- MAIN ---- */
+
+main .titre {
+    font-family: 'Rubik Mono One' !important;
+    color: #2C698D;
+    font-size: 20px !important;
+}
+
+main .w, main .m {
+    text-shadow: 0px 4px 4px #C4C4C4;
+    font-size: 40px;
+}
+
+main .and {
+    color: #FBEDA5;
+    text-shadow: 0px 4px 4px #2C698D;
+    font-size: 40px;
+}
+
+main .titre img {
+    width: 10%;
+    color: #fbeda5;
+}
+
+/* ---- FOOTER ---- */
+
+.base_footer {
+    background: black !important;
+}
+
+.base_footer a {
+    text-decoration: none !important;
+    color: #2c698d !important;
+    font-weight: 500;
+}
+
+.base_footer ul, .base_footer li {
+    list-style: none !important;
+    margin-bottom: 0rem !important;
+}
+
+.base_footer{
+    text-align: center;
+}
+
 /**********************************************************************
                             INDEX
 ***********************************************************************/
 
-/* ---- CHANGELOG ---- */
+/* ---- CAROUSEL ---- */
+
+.carousel {
+    position: absolute !important;
+    margin-left: 30%;
+    margin-top: 10%;
+}
 
 /* ---- PRESENTATION ---- */
+
+.barre_rose {
+    background: #D4B8D0;
+    height: 3px;
+    width: 215px;
+    margin-left: 45%;
+}
+
+.presentation .text {
+    width: 87%;
+    color: #2C698D;
+    position: relative;
+}
+
+.presentation p {
+    color: #2C698D;
+    font-size: 1.2em !important;
+}
+
+.barre_jaune {
+    background: #FBEDA5;
+    height: 3px;
+    width: 215px;
+}
 
 /* ---- BOUTTON ---- */
 
 .geoloc {
     margin-top: 10px !important;
     background: #2c698d !important;
+    border-radius: 6px !important;
+}
+
+.btn-block {
+    width: 77% !important;
 }
 
 .geoloc a {
     color: #fbeda5 !important;
 }
 
-/* ---- CAROUSEL 2 ---- */
+/* ---- CHANGELOG ---- */
 
-ol {
-    color: black !important;
+.card_changelog {
+    width: 35%;
+    height: 20vh;
+    border: 3px solid;
+    border-image: linear-gradient( rgba(44, 105, 141, 0.88), rgba(44, 105, 141, 0.37));
+    border-image-slice: 1;
 }
 
-.carousel {
-    margin-top: 10px;
+.changelog h1 {
+    font-size: 1em;
 }
 
-.card-body a small {
-    background: #2c698d !important;
-    color: #fbeda5 !important;
-    padding: 0.7em;
-    border-radius: 5px;
-    font-size: 0.7em;
-}
-
-.card-title {
-    font-size: 1.5em;
-}
-
-.card-body p {
-    font-size: 1.2em;
+.changelog .text {
+    font-size: 0.8em;
+    color: #2C698D;
 }
 
 /**********************************************************************
@@ -117,16 +189,7 @@ ol {
     color: #2c698d;
 }
 
-.profil section{
-    border: 1px solid #2c698d;
-    position: relative;
-}
-
-.profil section p {
-    margin-bottom: 0 !important;
-}
-
-.profil button{
+.profil button {
     background: #2c698d !important;
     color: #fbeda5 !important;
 }
@@ -134,25 +197,26 @@ ol {
 /**********************************************************************
                             CONTACT
 ***********************************************************************/
-.container h1{
+
+.container h1 {
     color: #2c698d;
 }
 
-.contact button, .connectez_vous button{
+.contact button, .connectez_vous button {
     background: #2c698d !important;
     color: #fbeda5 !important;
 }
 
-.form-control{
+.form-control {
     border: 1px solid #2c698d !important;
     box-shadow: none;
 }
 
-.form-control:focus{
+.form-control:focus {
     box-shadow: none !important;
 }
 
-.contact label{
+.contact label {
     color: dimgrey;
 }
 
@@ -165,7 +229,7 @@ ol {
 /* ---- FEUILLE DES MENTIONS LEGALES ---- */
 
 .lml svg {
-    fill: black;
+    fill: #2c698d;
     width: 3vh;
     height: 3vh;
 }
@@ -173,7 +237,7 @@ ol {
 /* ---- FEUILLE DES CGU ---- */
 
 .cgu svg {
-    fill: black;
+    fill: #2c698d;
     width: 2vh;
     height: 2vh;
 }
@@ -181,7 +245,7 @@ ol {
 /* ---- FEUILLE DU PLAN DU SITE ---- */
 
 .pds svg {
-    fill: black;
+    fill: #2c698d;
     width: 2vh;
     height: 2vh;
 }
@@ -203,22 +267,139 @@ ol {
     color: dimgrey !important;
 }
 
+/*---------------------------------------------------- ADMINISTRATEUR REGLER SUR DESKTOP ----------------------------------------------------*/
 
+/**********************************************************************
+                            ADMIN JEUX
+***********************************************************************/
+
+/* ---- LISTE DES JEUX ---- */
+
+.container h1 {
+    font-size: 1.5em;
+}
+
+thead {
+    background: lightgrey;
+    color: #2C698D;
+    font-weight: bold;
+}
+
+.ajout_jeu {
+    background: #2c698d !important;
+    color: #fbeda5 !important;
+}
+
+/* ---- FORMULAIRE JEUX ---- */
+
+.formjeu button {
+    background: #2c698d !important;
+    color: #fbeda5 !important;
+}
+
+/**********************************************************************
+                            ADMIN USERS
+***********************************************************************/
+
+/* ---- LISTE DES MEMBRES ---- */
+
+.ajout_user {
+    background: #2c698d !important;
+    color: #fbeda5 !important;
+}
 
 /******************************************************************************************************************************************************/
 
 /**********************************************************************
-                            MEDIA QUERIES
+---------------------------- MEDIA QUERIES ---------------------------
 ***********************************************************************/
 
-/*-------------------------------------------------------------------
-            ------------------ NAVBAR -----------------
--------------------------------------------------------------------*/
+@media (min-width: 1200px) {
+    /**********************************************************************
+                                 BASE
+    ***********************************************************************/
+    /* ---- NAVBAR ----*/
+    /* ---- FOOTER ----*/
+    .base_footer{
+    }
 
-/*-------------------------------------------------------------------
-            ------------------ FOOTER -----------------
--------------------------------------------------------------------*/
+    .list_footer {
+        display: flex !important;
+        text-align: center;
+    }
 
-/*-------------------------------------------------------------------
-        --------- MENTIONS LEGALES / CGU / PLAN DU SITE ---------
--------------------------------------------------------------------*/
+    .base_footer li {
+        margin-left: 1%;
+    }
+
+    .base_footer p{
+        text-align: end;
+        color: #2c698d;
+        font-weight: 500;
+    }
+
+    .fa-copyright{
+        color: #fbeda5;
+    }
+
+    /**********************************************************************
+                                INDEX
+    ***********************************************************************/
+    /* ---- CAROUSEL ---- */
+    /* .carousel {
+        position: absolute !important;
+        margin-left: 30%;
+        margin-top: 10%;
+    } */
+
+    /* ---- PRESENTATION ---- */
+    .barre_rose {
+        margin-left: 65%;
+    }
+    .presentation .text {
+        width: 61%;
+        font-size: 1.3em;
+    }
+    .presentation p {
+        font-size: 1.8em !important;
+    }
+    .barre_jaune {
+        margin-left: 15%;
+    } 
+
+    /* ---- BOUTTON ---- */
+     .geoloc {
+        border-radius: 25px !important;
+    }
+    .btn-block {
+        width: 90% !important;
+        height: 6vh;
+    }
+    .geoloc a {
+       font-size: 1.5em;
+    }
+
+    /* ---- CHANGELOG ---- */
+    /* .card_changelog {
+        width: 35%;
+        height: 20vh;
+        border: 3px solid;
+        border-image: linear-gradient( rgba(44, 105, 141, 0.88), rgba(44, 105, 141, 0.37));
+        border-image-slice: 1;
+    }
+    .changelog h1 {
+        font-size: 1em;
+    }
+    .changelog .text {
+        font-size: 0.8em;
+        color: #2C698D;
+    } */
+    
+    /*-------------------------------------------------------------------
+            --------- MENTIONS LEGALES / CGU / PLAN DU SITE ---------
+    -------------------------------------------------------------------*/
+    /* ---- GENERAL FEUILLE ---- */
+    /* ---- FEUILLE DES MENTIONS LEGALES ---- */
+    /* ---- FEUILLE DES CGU ---- */
+    /* ---- FEUILLE DU PLAN DU SITE ---- */
+}

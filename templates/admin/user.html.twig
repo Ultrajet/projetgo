@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin User{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center mt-3 mb-5">Gestion des membres</h1>
+    <table class="table col-md-8 mx-auto ">
+        <thead>
+            <tr class="text-center titre_colonne">
+                <td>Id</td>
+                <td>Pseudo</td>
+                <td>E-mail</td>
+                <td>Ville</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr class="text-center">
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.ville }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="row">
+        <a href="#" class="btn col-6 mx-auto text-center mt-3 ajout_user"><i class="fas fa-plus"></i> Ajouter un
+            membre</a>
+    </div>
+</div>
+{% endblock %}

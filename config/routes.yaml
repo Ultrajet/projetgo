@@ -1,4 +1,4 @@
-CGU:
+cgu:
     path: /cgu
     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     defaults:
@@ -8,12 +8,12 @@ contact:
     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     defaults:
       template: contact.html.twig
-mentions legales:
+mentions_legales:
     path: /mentions_legales
     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     defaults:
       template: mentions_legales.html.twig
-plan du site:
+plan_du_site:
     path: /plan_du_site
     controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
     defaults:
