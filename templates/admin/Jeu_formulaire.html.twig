@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeu Formulaire{% endblock %}
+
+{% block body %}
+<div class="container formjeu">
+    {{ form(jeuxform) }}
+    <button class="btn d-block col-8 mx-auto">Valider</button>
+</div>
+{% endblock %}

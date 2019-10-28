@@ -4,54 +4,51 @@
 
 {% block body %}
 <div class="container">
-    <!--CHANGELOG DU SITE-->
-    <div class="changelog text-justify mb-5 mt-3">
-        <h4>Lancement du projet !</h4>
-        <p>Le site ----- prend forme et avance doucement.<br>
-            La mise en place est lancer !!
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum."
-        </p>
-    </div>
-
-    <!--CAROUSEL 1 CHANGELOG-->
-    <!-- <div id="carouselExampleSlidesOnly" class="carousel slide m-0 mb-5" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/images/empruntepokemon1.png" class="d-block w-50 mx-auto mb-5" alt="equipejaune">
-            </div>
-            <div class="carousel-item">
-                <img src="/images/empruntepokemon2.png" class="d-block w-50 mx-auto mb-5" alt="equipebleu">
-            </div>
-            <div class="carousel-item">
-                <img src="/images/empruntepokemon3.png" class="d-block w-50 mx-auto mb-5" alt="equiperouge">
+    <!--PRESENTATION DU SITE-->
+    <div class="presentation mb-4">
+        <div class="barre_rose mt-3 mr-2 mb-3"></div>
+        <!--CAROUSEL-PRESENTATION DU SITE-->
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('images/essai_1.png') }}" class="d-block" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('images/essai_2.png') }}" class="d-block" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('images/essai_3.png') }}" class="d-block" alt="...">
+                </div>
             </div>
         </div>
-    </div> -->
 
-    <!--PRESENTATION DU SITE-->
-    <div class="presentation text-justify mb-5">
-        <h4>Participer à notre communauté ?</h4>
-        <p>Ici vous pouvez trouvez des compatriotes sur vos jeux en RA préféré !<br>
-            Connectez-vous et chercher autour de vous des joueurs et peut-etre de futur amis avec qui jouer !
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum."
-        </p>
+        <div class="text text-center mx-auto">Aux joueurs de jeux en RA votre nouveau compagnon est là ! <br><br>
+            Au travers de WALK & MEET retrouvez des joueurs et amusez-vous ensemble ! <br><br>
+            Géolocalisez-vous et trouvez des joueurs près de chez vous ! <br><br>
+        </div>
+        <p class="text-center font-weight-bold">N’hésitez plus et inscrivez-vous !</p>
+        <div class="barre_jaune"></div>
     </div>
 
     <!--BOUTON ME GEOLOCALISER-->
-    <button type="button" class="geoloc btn btn-lg btn-block mb-5"><a href="#">ME GEOLOCALISER</a></button>
+    <button type="button" class="geoloc btn btn-lg btn-block mb-4 mx-auto"><a href="#">GEOLOCALISEZ-VOUS</a></button>
+
+    <!--CHANGELOG DU SITE-->
+    <div class="changelog">
+        <h4 class="text-center font-weight-bold pb-2">CHANGELOG</h4>
+        <div class="card_changelog mx-auto">
+            <h1 class="text-center">PHASE 1</h1>
+            <div class="text text-center">Lancement de la version Bêta de WALK & MEET. <br>
+                Nous attendons vos retours pour des améliorations.</div>
+
+        </div>
+    </div>
+
+
+
 
     <!--CARROUSEL 2 PRESENTATION DES JEUX-->
-    <h4 class="titre text-justify">Les différents jeux ayant une communauté sur notre appli !</h4>
+    <!-- <h4 class="titre text-justify">Les différents jeux ayant une communauté sur notre appli !</h4>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -112,7 +109,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
+    </div> -->
 </div>
 
 {% endblock %}
