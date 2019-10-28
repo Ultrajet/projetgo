@@ -62,9 +62,21 @@ class User implements UserInterface
      */
     private $coordonnees;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="userPost")
+     */
+    private $messages;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="userGet")
+     */
+    private $messagesReceived;
+
     public function __construct()
     {
         $this->userJeux = new ArrayCollection();
+        $this->messages = new ArrayCollection();
+        $this->messagesReceived = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -215,6 +227,68 @@ class User implements UserInterface
     public function setCoordonnees(?string $coordonnees): self
     {
         $this->coordonnees = $coordonnees;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(Message $message): self
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setUserPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(Message $message): self
+    {
+        if ($this->messages->contains($message)) {
+            $this->messages->removeElement($message);
+            // set the owning side to null (unless already changed)
+            if ($message->getUserPost() === $this) {
+                $message->setUserPost(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessagesReceived(): Collection
+    {
+        return $this->messagesReceived;
+    }
+
+    public function addMessagesReceived(Message $messagesReceived): self
+    {
+        if (!$this->messagesReceived->contains($messagesReceived)) {
+            $this->messagesReceived[] = $messagesReceived;
+            $messagesReceived->setUserGet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessagesReceived(Message $messagesReceived): self
+    {
+        if ($this->messagesReceived->contains($messagesReceived)) {
+            $this->messagesReceived->removeElement($messagesReceived);
+            // set the owning side to null (unless already changed)
+            if ($messagesReceived->getUserGet() === $this) {
+                $messagesReceived->setUserGet(null);
+            }
+        }
 
         return $this;
     }

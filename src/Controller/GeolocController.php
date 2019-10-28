@@ -30,23 +30,31 @@ class GeolocController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(User::class);
         $users = $repository->findAll();
+
         foreach ($users as $user) {
-            $output[$user->getUsername()] = $user->getCoordonnees();
+            $output[$user->getUsername()] = [
+                'coordonnees' => $user->getCoordonnees(),
+                'id' => $user->getId()
+            ];
         }
 
         return new JsonResponse($output);
     }
 
     /**
-     * @Route("/apitest/users/{jeu}", name="apiUsersGame")
+     * @Route("/api/users/{jeu}", name="apiUsersGame")
      */
     public function apiUsersGame($jeu)
     {
-        $repository = $this->getDoctrine()->getRepository(Jeu::class);        
+        $repository = $this->getDoctrine()->getRepository(Jeu::class);
         $theJeu = $repository->find($jeu);
         $userJeu = $theJeu->getUserJeux();
+        
         foreach ($userJeu as $user) {
-            $output[$user->getUser()->getUsername()] = $user->getUser()->getCoordonnees();
+            $output[$user->getUser()->getUsername()] = [
+                'coordonnees' => $user->getUser()->getCoordonnees(),
+                'id' => $user->getUser()->getId()
+            ];
         }
 
         return new JsonResponse($output);

@@ -100,30 +100,30 @@ ol {
 /**********************************************************************
                             PROFIL
 ***********************************************************************/
-.image img{
+/* .profil .image {
     height: 30vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+} */
+
+.profil i.fas.fa-edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: initial;
+    margin: 2px;
+    color: #2c698d;
 }
 
-.infos_perso{
-    font-size: 0.7em;
+.profil section{
     border: 1px solid #2c698d;
-    height: auto;
+    position: relative;
 }
 
-.text_descriptif{
-    border: 1px solid #2c698d;
-    height: auto;
-}
-
-.jeux{
-    font-size: 0.7em;
-    border: 1px solid #2c698d;
-    height: auto;
-    
-}
-
-.jeux p, .text_descriptif p, .infos_perso p{
-    margin-bottom: 0rem !important;
+.profil section p {
+    margin-bottom: 0 !important;
 }
 
 .profil button{

@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+
+<div class="container profil">
+
+    <h1 class="display-4 text-center">{{ app.user.username }}</h1>
+
+    <section class="mt-5 p-2">
+        <h5>Vos informations</h5>
+        <p>E-MAIL : {{ app.user.email }} <br>
+            MOT DE PASSE : <br>
+            VILLE : {{ app.user.ville }}</p>
+        <i class="fas fa-edit"></i>
+    </section>
+
+    <section class="mt-5 p-2">
+        <h5>Texte de présentation</h5>
+        <p>...</p>
+        <i class="fas fa-edit"></i>
+    </section>
+
+    <section class="mt-5 p-2">
+        <h5>Liste de vos jeux</h5>
+        <p>
+            {% for userJeu in app.user.userJeux %}
+            <span>{{ userJeu.jeu.nom }}</span><br>
+            {% endfor %}
+        </p>
+        <i class="fas fa-edit"></i>
+    </section>
+
+    <div class="button mt-3">
+        <button type="submit" class="btn col-12 mt-2">Supprimer le compte</button>
+    </div>
+
+</div>
+
+{% endblock %}
