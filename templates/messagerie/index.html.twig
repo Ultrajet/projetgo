@@ -21,22 +21,36 @@
 {% endblock %}
 
 {% block body %}
+
 <h1 class="text-center">{{ id }}.</h1>
+
 <div class="container border py-2 d-flex flex-column flex-grow-1">
+
     <div class="messagerie-container flex-grow-1"></div>
+
+    <!-- <small id="clock">Prochain rafraichissement : <span></span></small> -->
+
     {{ form_start(form) }}
     {{ form_row(form.content) }}
+
+    <label for="checkInterval">Activer le rafraichissement automatique</label>
+    <input type="checkbox" name="checkInterval" id="checkInterval" checked>
+
     <button class="btn btn-primary col-4 d-inline-block">Envoyer</button>
     {{ form_end(form) }}
+
 </div>
+
 {% endblock %}
 
 {% block javascripts %}
 <script>
     const discussion = document.querySelector(".messagerie-container");
+    const checkInterval = document.querySelector("#checkInterval");
+    // let clock = 5;
 
     function displayMessage(message) {
-        console.log(message);
+        // console.log(message);
 
         let divMessage = document.createElement('p');
         let divDate = document.createElement('small');
@@ -49,7 +63,7 @@
         divDate.className = 'd-block';
 
         divMessage.textContent = message.content;
-        divDate.textContent = new Date(message.time.date).toLocaleString("fr-FR", {hour12: false});
+        divDate.textContent = new Date(message.time.date).toLocaleString("fr-FR", { hour12: false });
 
         divMessage.appendChild(divDate);
         discussion.appendChild(divMessage);
@@ -61,9 +75,7 @@
             type: 'GET',
             dataType: 'json',
             success: json => {
-
-                console.log(json);
-
+                // console.log(json);
                 discussion.innerHTML = "";
 
                 $.each(json, (index, objet) => {
@@ -71,6 +83,14 @@
                 })
             }
         })
+
+        // let clock = 5;
+        // setInterval(() => {
+        //     if (clock > 0) {
+        //         clock = clock - 1;
+        //         document.querySelector('#clock span').textContent = clock;
+        //     }
+        // }, 1000);
     }
 
     function sendMessage() {
@@ -80,20 +100,33 @@
             type: 'POST',
             dataType: 'json',
             success: json => {
-                console.log(json);
+                // console.log(json);
                 $('form input').val('');
             }
         });
     }
 
     document.querySelector('form').addEventListener('submit', event => {
-
         event.preventDefault();
         sendMessage();
-
     })
 
-    setInterval(getMessages, 1000);
-    // getMessages();
+    document.querySelector("#checkInterval").addEventListener('change', () => {
+        if (!checkInterval.checked) {
+            // document.querySelector('#clock span').textContent = "-";
+            clearInterval(myInterval);
+            alert("Le tchat n'est plus rafraichi automatiquement");
+        }
+        else {
+            // let clock = 5;
+            getMessages();
+            myInterval = setInterval(getMessages, 5000);
+            alert("Le tchat est rafraichi toutes les cinq secondes");
+        }
+    })
+
+    let myInterval = setInterval(getMessages, 5000);
+
+    getMessages();
 </script>
 {% endblock %}
