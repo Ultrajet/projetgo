@@ -11,7 +11,10 @@
     }
 
     .messagerie-container {
-        min-height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow: auto;
     }
 </style>
 
@@ -30,24 +33,67 @@
 
 {% block javascripts %}
 <script>
-    document.querySelector('form').addEventListener('submit', event => {
-        event.preventDefault();
-        let content = $('form input').val();
-        let data = {
-            form: $("form").serializeArray(),
-            userGet: "{{ id }}"
-        };
-        // console.log(content);
+    const discussion = document.querySelector(".messagerie-container");
 
+    function displayMessage(message) {
+        console.log(message);
+
+        let divMessage = document.createElement('p');
+        let divDate = document.createElement('small');
+
+        divMessage.className = message.userPost == "{{ id }}" ?
+            'align-self-start border'
+            :
+            'align-self-end border text-right'
+            ;
+        divDate.className = 'd-block';
+
+        divMessage.textContent = message.content;
+        divDate.textContent = new Date(message.time.date).toLocaleString("fr-FR", {hour12: false});
+
+        divMessage.appendChild(divDate);
+        discussion.appendChild(divMessage);
+    }
+
+    function getMessages() {
         $.ajax({
-            url: "{{ path('postmessage') }}",
+            url: "{{ path('getmessages', {id: id}) }}",
+            type: 'GET',
+            dataType: 'json',
+            success: json => {
+
+                console.log(json);
+
+                discussion.innerHTML = "";
+
+                $.each(json, (index, objet) => {
+                    displayMessage(objet);
+                })
+            }
+        })
+    }
+
+    function sendMessage() {
+        $.ajax({
+            url: "{{ path('postmessage', {id: id}) }}",
             data: $("form").serializeArray(),
             type: 'POST',
             dataType: 'json',
             success: json => {
                 console.log(json);
+                $('form input').val('');
             }
         });
+    }
+
+    document.querySelector('form').addEventListener('submit', event => {
+
+        event.preventDefault();
+        sendMessage();
+
     })
+
+    setInterval(getMessages, 1000);
+    // getMessages();
 </script>
 {% endblock %}

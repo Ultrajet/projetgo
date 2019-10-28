@@ -51,9 +51,11 @@
                     <a class="nav-link" href="{{path('deconnexion')}}">Déconnexion</a>
                 </li>
                 </li>
+                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('profil', {id: app.user.id})}}">Mon profil</a>
                 </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('geoloc')}}">Géolocalisation</a>
                 </li>

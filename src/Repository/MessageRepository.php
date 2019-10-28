@@ -19,6 +19,23 @@ class MessageRepository extends ServiceEntityRepository
         parent::__construct($registry, Message::class);
     }
 
+    public function getMessages($user_post_id, $user_get_id)
+    {
+        return $this->createQueryBuilder('m')
+            ->select('up.id AS userPost', 'ug.id AS userGet', 'm.content', 'm.time')
+            ->leftJoin('m.userPost', 'up')
+            ->leftJoin('m.userGet', 'ug')
+            ->andWhere('m.userPost = :post OR m.userPost = :get')
+            ->andWhere('m.userGet = :get OR m.userGet = :post')
+            ->orderBy('m.time', 'ASC')
+            ->setParameters([
+                ':post' => $user_post_id,
+                ':get' => $user_get_id
+            ])
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Message[] Returns an array of Message objects
     //  */

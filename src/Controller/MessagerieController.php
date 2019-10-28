@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class MessagerieController extends AbstractController
 {
@@ -28,25 +29,19 @@ class MessagerieController extends AbstractController
     }
 
     /**
-     * @Route("/postmessage", name="postmessage", methods={"GET", "POST"})
+     * @Route("/postmessage/{id}", name="postmessage", methods={"POST"})
      */
-    public function postMessage(Request $request, Security $security)
+    public function postMessage(Request $request, $id)
     {
-        // // $repository = $this->getDoctrine()->getRepository(User::class);
-        // // $userGet = $repository->find($request->get('userGet'));
-        // return new JsonResponse($request->getContent());
-        // exit;
-
         $message = new Message();
         $form = $this->createForm(MessageType::class, $message);
 
         $theReturn = '';
         // $content = $form->get('content')->getData();
-        $content = 'Hello World!';
-        $userPost = $security->getUser();
+        $userPost = $this->getUser();
 
         $repository = $this->getDoctrine()->getRepository(User::class);
-        $userGet = $repository->find(100);
+        $userGet = $repository->find($id);
 
         $form->handleRequest($request);
 
@@ -68,5 +63,18 @@ class MessagerieController extends AbstractController
         }
 
         return $theReturn;
+    }
+
+    /**
+     * @Route("/getmessages/{id}", name="getmessages")
+     */
+    public function getMessages($id)
+    {
+        $repository = $this->getDoctrine()->getRepository(Message::class);
+
+        $userPost = $this->getUser()->getId();
+        $messages = $repository->getMessages($userPost, $id);
+
+        return new JsonResponse($messages);
     }
 }
