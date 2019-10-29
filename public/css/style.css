@@ -79,6 +79,7 @@ main .titre img {
 
 .base_footer {
     background: black !important;
+    text-align: center;
 }
 
 .base_footer a {
@@ -92,8 +93,8 @@ main .titre img {
     margin-bottom: 0rem !important;
 }
 
-.base_footer{
-    text-align: center;
+.base_footer p {
+    margin-bottom: 0;
 }
 
 /**********************************************************************

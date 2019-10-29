@@ -12,14 +12,15 @@
 
     .messagerie-container {
         display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        overflow: auto;
+        flex-direction: column-reverse;
+        flex-basis: 0;
+        overflow-y: scroll;
     }
 
-    p.get, p.post {
+    p.get,
+    p.post {
         padding: 10px;
-        min-width: 15vw;
+        min-width: 100%;
         color: initial;
     }
 
@@ -29,6 +30,13 @@
 
     p.post {
         background: #FBEDA5;
+    }
+
+    @media screen and (min-width: 768px) {
+        p.get,
+        p.post {
+            min-width: 25vw;
+        }
     }
 </style>
 
