@@ -116,6 +116,7 @@
             success: json => {
                 console.log(json);
                 $('form input').val('');
+                getMessages();
             }
         });
     }
@@ -139,8 +140,8 @@
         }
     })
 
-    // let myInterval = setInterval(getMessages, 5000);
+    let myInterval = setInterval(getMessages, 5000);
 
-    // getMessages();
+    getMessages();
 </script>
 {% endblock %}
