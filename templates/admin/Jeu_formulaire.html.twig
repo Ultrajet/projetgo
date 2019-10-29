@@ -4,7 +4,9 @@
 
 {% block body %}
 <div class="container formjeu">
-    {{ form(jeuxform) }}
+    {{ form_start(jeuxform) }}
+    {{ form_row(jeuxform.nom) }}
     <button class="btn d-block col-8 mx-auto">Valider</button>
+    {{ form_end(jeuxform) }}
 </div>
 {% endblock %}
