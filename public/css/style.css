@@ -59,7 +59,7 @@ button {
 
 /* ---- MAIN ---- */
 
-main .titre {
+main .logo {
     font-family: 'Rubik Mono One' !important;
     color: #2C698D;
     font-size: 20px !important;
@@ -76,7 +76,7 @@ main .and {
     font-size: 40px;
 }
 
-main .titre img {
+main .logo img {
     width: 10%;
     color: #fbeda5;
 }
@@ -115,12 +115,11 @@ main .titre img {
 ***********************************************************************/
 
 /* ---- CAROUSEL ---- */
-
-.carousel {
+/* .carousel {
     position: absolute !important;
     margin-left: 30%;
     margin-top: 10%;
-}
+} */
 
 /* ---- PRESENTATION ---- */
 
@@ -181,6 +180,38 @@ main .titre img {
 .changelog .text {
     font-size: 0.8em;
     color: #2C698D;
+}
+
+/* ---- CAROUSEL ---- */
+.card img{
+    height: 30vh;
+}
+
+.card-body{
+    background: rgba(0, 0, 0, 0.787);
+    color: #fbeda5;
+}
+
+.card-body a:hover{
+    text-decoration: none !important;
+}
+
+.card-text small{
+    color: white !important;
+}
+
+.card-text small:hover{
+    color: #fbeda5 !important;
+}
+
+.carousel-control-next, .carousel-control-prev{
+    opacity: 1 !important;
+    margin-top: 9rem;
+}
+
+.fa-angle-left, .fa-angle-right{
+    color: #fbeda5;
+    font-size: 2em;
 }
 
 /**********************************************************************
@@ -345,16 +376,13 @@ thead {
 ---------------------------- MEDIA QUERIES ---------------------------
 ***********************************************************************/
 @media (min-width: 768px) {
-   /**********************************************************************
-                        CONNECTION / PROFIL / CONTACT
-    ***********************************************************************/
+
+   /*************** CONNECTION / PROFIL / CONTACT ********************/
     .connectez, .profil, .contact {
         max-width: 425px !important;
     }
 
-    /******************************************************************
-                                PLAN DU SITE
-    ********************************************************************/
+    /*************** PLAN DU SITE ***************/
     .pds {
         max-width: 425px !important;
     }
@@ -376,15 +404,7 @@ thead {
         margin-right: -50%;
     }
 
-    /**********************************************************************
-                                INDEX
-    ***********************************************************************/
-    /* ---- CAROUSEL ---- */
-    .carousel {
-        margin-left: 38%;
-        margin-top: 2%;
-    }
-
+    /*************** INDEX ***************/
     /* ---- PRESENTATION ---- */
     .barre_rose {
         margin-left: 55%;
@@ -408,9 +428,20 @@ thead {
         margin: 8px;
     }
 
+    /* ---- CAROUSEL ---- */
+    .card img{
+    height: 50vh;
+    }
+
+    .carousel-control-next, .carousel-control-prev{
+        margin-top: 19rem;
+    }
+
 }
 
 @media (min-width: 1024px){
+
+    /*************** INDEX ***************/
     /* ---- PRESENTATION ---- */
     .barre_rose {
         margin-left: 55%;
@@ -422,12 +453,19 @@ thead {
         margin-left: 12%;
         width: 33%
     }
+
+    .card img{
+        height: 70vh;
+    }
+    
+    .carousel-control-next, .carousel-control-prev{
+        margin-top: 29rem;
+    }
 }
 
 @media (min-width: 1200px) {
-    /**********************************************************************
-                                 BASE
-    ***********************************************************************/
+
+    /*************** BASE ***************/
     /* ---- NAVBAR ----*/
     .navbar-expand-md .navbar-collapse {
         justify-content: center;
@@ -463,14 +501,12 @@ thead {
         padding-bottom: 10px;
     }
 
-    /**********************************************************************
-                                INDEX
-    ***********************************************************************/
+    /************* INDEX *************/
     /* ---- CAROUSEL ---- */
-    .carousel {
+    /* .carousel {
         margin-left: 35%;
         margin-top: 2%;
-    }
+    } */
 
     /* ---- PRESENTATION ---- */
     .barre_rose {
@@ -509,7 +545,7 @@ thead {
     /* ---- CHANGELOG ---- */
     .card_changelog {
         width: 24%;
-        height: 30vh;
+        height: 33vh;
         border: 6px solid;
         border-image: linear-gradient( rgba(44, 105, 141, 0.88), rgba(44, 105, 141, 0.37));
         border-image-slice: 1;
@@ -531,6 +567,14 @@ thead {
     .changelog .text {
         font-size: 1.6em;
         /* margin: 8px; */
+    }
+
+    .card img{
+        height: 80vh;
+    }
+    
+    .carousel-control-next, .carousel-control-prev{
+        margin-top: 43rem;
     }
 
     /*-------------------------------------------------------------------
