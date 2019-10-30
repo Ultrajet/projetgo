@@ -100,8 +100,10 @@ class RegistrationFormType extends AbstractType
         if (!is_null($data)) {
             $generateurCoordonnees = new GenerateurCoordonnees;
 
-            if (!$generateurCoordonnees->generer($data)) {
-                $context->buildViolation("Le nom de cette ville n'a pas été reconnu.")
+            $output = $generateurCoordonnees->generer($data);
+
+            if (!is_array($output)) {
+                $context->buildViolation($output)
                     ->atPath('ville')
                     ->addViolation();
             }

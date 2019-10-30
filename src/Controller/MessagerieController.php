@@ -10,8 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 class MessagerieController extends AbstractController
 {
@@ -20,10 +18,13 @@ class MessagerieController extends AbstractController
      */
     public function message($id)
     {
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $user = $repository->find($id);
+
         $form = $this->createForm(MessageType::class);
 
         return $this->render('messagerie/index.html.twig', [
-            'id' => $id,
+            'user' => $user,
             'form' => $form->createView()
         ]);
     }
@@ -59,9 +60,9 @@ class MessagerieController extends AbstractController
             $entityManager->persist($message);
             $entityManager->flush();
 
-            $theReturn = new JsonResponse('OKAY!!!');
+            $theReturn = new JsonResponse('envoyé');
         } else {
-            $theReturn = new JsonResponse('CA MARCHE PAS MAIS DU COUP CA MARCHE');
+            $theReturn = new JsonResponse('pas envoyé');
         }
 
         return $theReturn;

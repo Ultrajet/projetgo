@@ -12,6 +12,7 @@
                 <td>Pseudo</td>
                 <td>E-mail</td>
                 <td>Ville</td>
+                <td>Jeux</td>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,17 @@
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.ville }}</td>
+                <td>
+                    <ul class="p-0">
+                        {% if user.userJeux|length == 0 %}
+                        <span class="font-italic">Aucun jeu</span>
+                        {% else %}
+                        {% for userJeu in user.userJeux %}
+                        <li class="list-unstyled">{{ userJeu.jeu.nom }}</li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

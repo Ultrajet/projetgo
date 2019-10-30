@@ -27,7 +27,7 @@ class MessageRepository extends ServiceEntityRepository
             ->leftJoin('m.userGet', 'ug')
             ->andWhere('m.userPost = :post OR m.userPost = :get')
             ->andWhere('m.userGet = :get OR m.userGet = :post')
-            ->orderBy('m.time', 'ASC')
+            ->orderBy('m.time', 'DESC')
             ->setParameters([
                 ':post' => $user_post_id,
                 ':get' => $user_get_id

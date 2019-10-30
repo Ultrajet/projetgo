@@ -15,7 +15,7 @@
     </h3>
     {% endif %}
 
-    <section class="mt-5 p-2">
+    <section class="border mt-5 p-2">
         <h5>Texte de présentation</h5>
         <p>
             {% if user.txtProfil is null %}
@@ -26,7 +26,7 @@
         </p>
     </section>
 
-    <section class="mt-5 p-2">
+    <section class="border mt-5 p-2">
         <h5>Liste de jeux</h5>
         <p>
             {% if user.userJeux|length > 0 %}
@@ -39,20 +39,25 @@
         </p>
     </section>
 
-    <section class="mt-5 p-2">
+    {% if owner %}
+    <section class="border mt-5 p-2">
         <h5>Conversations en cours</h5>
         <p>Aucune pour le moment!</p>
     </section>
 
     <div class="button mt-3">
-        <button type="submit" class="btn col-12 mt-2">Modifier mon compte</button>
+        <a href="{{path('modifierProfil')}}">
+            <button type="submit" class="btn col-12 mt-2">Modifier mon compte</button>
+        </a>
     </div>
 
+    {% else %}
     <div class="button mt-3">
         <a href="{{path('messagerie', {id: user.id})}}">
             <button class="btn col-12 mt-2">Contacter</button>
         </a>
     </div>
+    {% endif %}
 
 </div>
 

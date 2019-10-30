@@ -36,9 +36,8 @@
             let id = data.id;
 
             if (coordonnees != null) {
-                let array = coordonnees.split(", ");
-                let lat = parseFloat(array[0]);
-                let lon = parseFloat(array[1]);
+                let lat = coordonnees[0];
+                let lon = coordonnees[1];
                 let titleURL = "{{ path('profil', {id: 'id'}) }}";
                 titleURL = titleURL.replace("id", id);
                 let title = "<a href='" + titleURL + "' target='_blank'>" + username + "</a>";

@@ -78,9 +78,15 @@ class AppFixtures extends Fixture
             }
 
             $userVille = $villes[array_rand($villes)];
-            
             $user->setVille($userVille);
-            $user->setCoordonnees($this->generateurCoordonnees->generer($userVille));
+
+            $coordonnees = $this->generateurCoordonnees->generer($userVille);
+            if (is_array($coordonnees)) {
+                $user->setCoordonnees($coordonnees);
+            }
+            else {
+                $user->setCoordonnees([51.0347708,2.3772525]);
+            }
 
             $manager->persist($user);
         }
