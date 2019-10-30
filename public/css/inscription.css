@@ -1,12 +1,17 @@
+.container{
+    color: dimgrey;
+}
+
 form ul li {
     color: initial !important;
 }
+
 label.required::before {
     color: red;
     content: " * ";
 }
 
-p{
+.container p{
     border: 2px solid #d4b8d0;
     background: #fbeda5;
     color: #2c698d;
@@ -19,4 +24,16 @@ p{
 
 .form-control{
     border: 1px solid #2c698d;
+}
+
+/******************************************************************************************************************************************************/
+
+/**********************************************************************
+---------------------------- MEDIA QUERIES ---------------------------
+***********************************************************************/
+
+@media (min-width: 768px) {
+    .container{
+        max-width: 425px;
+    }
 }

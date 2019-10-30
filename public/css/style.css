@@ -8,11 +8,26 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    color: dimgrey !important;
 }
 
 main {
     flex-grow: 1;
     margin: 20px 0;
+}
+
+h4, h5, h2 {
+    color: #2c698d !important;
+}
+
+/* p {
+    color: dimgray;
+} */
+
+/* ---- NAVBAR ---- */
+
+.base_navbar {
+    background: black !important;
 }
 
 .base_navbar ul, .base_navbar li {
@@ -22,21 +37,12 @@ main {
 
 .base_navbar a {
     text-decoration: none !important;
-    color: white !important;
+    color: #578ead !important;
+    font-weight: 900;
 }
 
-h4, h5, h2 {
-    color: #2c698d !important;
-}
-
-p {
-    color: dimgray;
-}
-
-/* ---- NAVBAR ---- */
-
-.base_navbar {
-    background: black !important;
+.navbar-collapse {
+    text-align: center;
 }
 
 button, .navbar-dark:focus, .collapsed {
@@ -53,7 +59,7 @@ button {
 
 /* ---- MAIN ---- */
 
-main .titre {
+main .logo {
     font-family: 'Rubik Mono One' !important;
     color: #2C698D;
     font-size: 20px !important;
@@ -70,7 +76,7 @@ main .and {
     font-size: 40px;
 }
 
-main .titre img {
+main .logo img {
     width: 10%;
     color: #fbeda5;
 }
@@ -79,12 +85,13 @@ main .titre img {
 
 .base_footer {
     background: black !important;
+    text-align: center;
 }
 
 .base_footer a {
     text-decoration: none !important;
-    color: #2c698d !important;
-    font-weight: 500;
+    color: #578ead !important;
+    font-weight: 700;
 }
 
 .base_footer ul, .base_footer li {
@@ -92,8 +99,15 @@ main .titre img {
     margin-bottom: 0rem !important;
 }
 
-.base_footer{
-    text-align: center;
+.base_footer p {
+    color: #578ead;
+    font-weight: 600;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+}
+
+.fa-copyright {
+    color: #fbeda5;
 }
 
 /**********************************************************************
@@ -101,12 +115,11 @@ main .titre img {
 ***********************************************************************/
 
 /* ---- CAROUSEL ---- */
-
-.carousel {
+/* .carousel {
     position: absolute !important;
     margin-left: 30%;
     margin-top: 10%;
-}
+} */
 
 /* ---- PRESENTATION ---- */
 
@@ -169,6 +182,38 @@ main .titre img {
     color: #2C698D;
 }
 
+/* ---- CAROUSEL ---- */
+.card img{
+    height: 30vh;
+}
+
+.card-body{
+    background: rgba(0, 0, 0, 0.787);
+    color: #fbeda5;
+}
+
+.card-body a:hover{
+    text-decoration: none !important;
+}
+
+.card-text small{
+    color: white !important;
+}
+
+.card-text small:hover{
+    color: #fbeda5 !important;
+}
+
+.carousel-control-next, .carousel-control-prev{
+    opacity: 1 !important;
+    margin-top: 9rem;
+}
+
+.fa-angle-left, .fa-angle-right{
+    color: #fbeda5;
+    font-size: 2em;
+}
+
 /**********************************************************************
                             PROFIL
 ***********************************************************************/
@@ -202,7 +247,7 @@ main .titre img {
     color: #2c698d;
 }
 
-.contact button, .connectez_vous button {
+.contact button {
     background: #2c698d !important;
     color: #fbeda5 !important;
 }
@@ -218,6 +263,14 @@ main .titre img {
 
 .contact label {
     color: dimgrey;
+}
+
+/**********************************************************************
+                            CONNECTION
+***********************************************************************/
+.connectez_vous button {
+    background: #2c698d !important;
+    color: #fbeda5 !important;
 }
 
 /**********************************************************************
@@ -313,88 +366,208 @@ thead {
 /**********************************************************************
 ---------------------------- MEDIA QUERIES ---------------------------
 ***********************************************************************/
+@media (min-width: 768px) {
 
-@media (min-width: 1200px) {
-    /**********************************************************************
-                                 BASE
-    ***********************************************************************/
-    /* ---- NAVBAR ----*/
-    /* ---- FOOTER ----*/
-    .base_footer{
+   /*************** CONNECTION / PROFIL / CONTACT ********************/
+    .connectez, .profil, .contact {
+        max-width: 425px !important;
     }
 
+    /*************** PLAN DU SITE ***************/
+    .pds {
+        max-width: 425px !important;
+    }
+
+    .pds .bloc0{
+        display: flex;
+    }
+
+    .pds .bloc1{
+        margin-right: 20px;
+        margin-left: -60px;
+    }
+
+    .pds li{
+        padding-right: 50px;
+    }
+
+    .pds ul ul {
+        margin-right: -50%;
+    }
+
+    /*************** INDEX ***************/
+    /* ---- PRESENTATION ---- */
+    .barre_rose {
+        margin-left: 55%;
+        width: 44%
+    }
+
+    .barre_jaune {
+        margin-bottom: 6vh;
+        width: 44%
+    }
+
+    /* ---- CHANGELOG ---- */
+    .changelog h1 {
+        font-size: 1.3em;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .changelog .text {
+        font-size: 1em;
+        margin: 8px;
+    }
+
+    /* ---- CAROUSEL ---- */
+    .card img{
+    height: 50vh;
+    }
+
+    .carousel-control-next, .carousel-control-prev{
+        margin-top: 19rem;
+    }
+
+}
+
+@media (min-width: 1024px){
+
+    /*************** INDEX ***************/
+    /* ---- PRESENTATION ---- */
+    .barre_rose {
+        margin-left: 55%;
+        width: 33%
+    }
+
+    .barre_jaune {
+        margin-bottom: 6vh;
+        margin-left: 12%;
+        width: 33%
+    }
+
+    .card img{
+        height: 70vh;
+    }
+    
+    .carousel-control-next, .carousel-control-prev{
+        margin-top: 29rem;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    /*************** BASE ***************/
+    /* ---- NAVBAR ----*/
+    .navbar-expand-md .navbar-collapse {
+        justify-content: center;
+    }
+
+    /* ---- MAIN ---- */
+    main .titre {
+        font-size: 40px !important;
+    }
+
+    main .w, main .m {
+        font-size: 80px;
+    }
+
+    main .and {
+        font-size: 80px;
+    }
+
+    /* ---- FOOTER ----*/
     .list_footer {
         display: flex !important;
-        text-align: center;
+        justify-content: center;
+        padding: 2vh;
     }
 
     .base_footer li {
         margin-left: 1%;
     }
 
-    .base_footer p{
-        text-align: end;
-        color: #2c698d;
-        font-weight: 500;
+    .base_footer p {
+        font-weight: 600;
+        margin-bottom: 0;
+        padding-bottom: 10px;
     }
 
-    .fa-copyright{
-        color: #fbeda5;
-    }
-
-    /**********************************************************************
-                                INDEX
-    ***********************************************************************/
+    /************* INDEX *************/
     /* ---- CAROUSEL ---- */
     /* .carousel {
-        position: absolute !important;
-        margin-left: 30%;
-        margin-top: 10%;
+        margin-left: 35%;
+        margin-top: 2%;
     } */
 
     /* ---- PRESENTATION ---- */
     .barre_rose {
-        margin-left: 65%;
+        /* margin-left: 55%; */
+        width: 30%
     }
+
     .presentation .text {
-        width: 61%;
+        width: 51%;
         font-size: 1.3em;
     }
+
     .presentation p {
         font-size: 1.8em !important;
     }
+
     .barre_jaune {
         margin-left: 15%;
-    } 
+        /* margin-bottom: 6vh; */
+        width: 30%
+    }
 
     /* ---- BOUTTON ---- */
-     .geoloc {
-        border-radius: 25px !important;
+    .geoloc {
+        border-radius: 50px !important;
     }
+
     .btn-block {
-        width: 90% !important;
-        height: 6vh;
+        width: 100% !important;
     }
+
     .geoloc a {
-       font-size: 1.5em;
+        font-size: 1.5em;
     }
 
     /* ---- CHANGELOG ---- */
-    /* .card_changelog {
-        width: 35%;
-        height: 20vh;
-        border: 3px solid;
+    .card_changelog {
+        width: 24%;
+        height: 33vh;
+        border: 6px solid;
         border-image: linear-gradient( rgba(44, 105, 141, 0.88), rgba(44, 105, 141, 0.37));
         border-image-slice: 1;
+
     }
+
+    .changelog h4{
+        font-size: 2.5em;
+        margin-top: 6vh;
+        margin-bottom: 4vh;
+    }
+
     .changelog h1 {
-        font-size: 1em;
+        font-size: 1.5em;
+        /* font-weight: bold;
+        margin-top: 5px; */
     }
+
     .changelog .text {
-        font-size: 0.8em;
-        color: #2C698D;
-    } */
+        font-size: 1.6em;
+        /* margin: 8px; */
+    }
+
+    .card img{
+        height: 80vh;
+    }
     
+    .carousel-control-next, .carousel-control-prev{
+        margin-top: 43rem;
+    }
+
     /*-------------------------------------------------------------------
             --------- MENTIONS LEGALES / CGU / PLAN DU SITE ---------
     -------------------------------------------------------------------*/
