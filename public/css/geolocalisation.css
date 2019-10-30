@@ -6,3 +6,19 @@ main {
     height: 80vh;
     margin: 0 auto;
 }
+
+.col-form-label{
+    color: dimgrey;
+    text-decoration: underline #2C698D;
+}
+
+.form-group{
+    margin-bottom: 1.5rem !important;
+    margin-top: 3rem !important;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    color: dimgrey;
+}

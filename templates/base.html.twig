@@ -38,7 +38,7 @@
             <span class="fas fa-bars"></span>
         </button>
         <div class="navbar-collapse collapse" id="navbar">
-            <ul class="navbar-nav text-center">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{path('index')}}">Accueil</a>
                 </li>
@@ -73,7 +73,7 @@
     </nav>
 
     <main>
-        <h1 class="titre display-1 text-center"><span class="w">W</span>alk <span class="and">&</span><img
+        <h1 class="logo display-1 text-center"><span class="w">W</span>alk <span class="and">&</span><img
                 src="{{ asset('images/PROJET_GO_LOGO_&.png') }}" alt="logo" class=""> <span class="m">M</span>eet</h1>
 
         {% block body %}{% endblock %}
@@ -87,8 +87,8 @@
                 <li><a class="" href="{{path('mentions_legales')}}">Mentions légales</a></li>
                 <li><a class="" href="{{path('plan_du_site')}}">Plan du site</a></li>
                 <li><a class="" href="{{path('contact')}}">Contact</a></li>
-                <li><a class="" href="{{path('cgu')}}">CGU</a></li>
-            </ul> 
+                <li><a class="" href="{{path('cgu')}}">CGU</a></li>  
+            </ul> <br>
             <p><i class="far fa-copyright"></i> Copyright Team ProjetGo</p>
         </div>
     </footer>

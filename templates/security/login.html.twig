@@ -3,8 +3,8 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<div class="container">
-    <h2 class="text-center text-uppercase pb-5">Connectez-vous</h2>
+<div class="container connectez">
+    <h2 class="text-center text-uppercase pb-3 pt-5">Connectez-vous</h2>
     <form method="post" class="connectez_vous">
         {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
