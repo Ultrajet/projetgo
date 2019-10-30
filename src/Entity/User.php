@@ -58,7 +58,7 @@ class User implements UserInterface
     private $userJeux;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(type="array", nullable=true)
      */
     private $coordonnees;
 
@@ -219,12 +219,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCoordonnees(): ?string
+    public function getCoordonnees(): ?array
     {
         return $this->coordonnees;
     }
 
-    public function setCoordonnees(?string $coordonnees): self
+    public function setCoordonnees(?array $coordonnees): self
     {
         $this->coordonnees = $coordonnees;
 

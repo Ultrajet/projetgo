@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Entity\UserJeu;
+use App\Service\GenerateurCoordonnees;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,18 +23,46 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/profil/modifier", name="modifierProfil")
+     * @Route("/modifier", name="modifierProfil")
      */
-    public function modifierProfil(Request $request)
+    public function modifierProfil(Request $request, GenerateurCoordonnees $generateurCoordonnees)
     {
         $user = $this->getUser();
-        $form = $this->createForm(UserType::class, $user);
+
+        $userJeux = $user->getUserJeux();
+        foreach ($userJeux as $userJeu) {
+            $output[] = $userJeu->getJeu()->getId();
+        }
+
+        $form = $this->createForm(UserType::class, $user, ['userJeu' => $output]);
 
         $form->handleRequest($request);
-        
-        if ($form->isSubmitted()) {
-            dump($form->getViewData());
-            exit;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+
+            // $jeux = $form->get('jeux')->getData();
+            // foreach ($jeux as $jeu) {
+            //     $userJeu = new UserJeu();
+            //     $userJeu
+            //         ->setUser($user)
+            //         ->setJeu($jeu);
+            //     $entityManager->persist($userJeu);
+            // }
+
+            $user = $form->getData();
+
+            $ville = $form->get('ville')->getData();
+            $coordonnees = $generateurCoordonnees->generer($ville);
+            $user->setCoordonnees($coordonnees);
+
+            // dump($user);
+            // exit;
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('index');
         }
 
         return $this->render('user/modifier_profil.html.twig', [

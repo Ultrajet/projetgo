@@ -38,6 +38,13 @@ class GeolocController extends AbstractController
             ];
         }
 
+        // $user = $repository->find(108);
+
+        // $output[$user->getUsername()] = [
+        //     'coordonnees' => $user->getCoordonnees(),
+        //     'id' => $user->getId()
+        // ];
+
         return new JsonResponse($output);
     }
 

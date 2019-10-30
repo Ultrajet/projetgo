@@ -8,25 +8,10 @@
 
     {{ form_start(form) }}
     {{ form_row(form.username) }}
-    {{ form_row(form.password) }}
     {{ form_row(form.email) }}
     {{ form_row(form.ville) }}
     {{ form_row(form.txt_profil) }}
-    {# form_row(form.jeux) #}
-    <fieldset>
-        <label for="wesh">
-            Check 1:
-            <input type="checkbox" name="wesh" id="wesh">
-        </label>
-        <label for="wesh2">
-            Check 2:
-            <input type="checkbox" name="wesh2" id="wesh2">
-        </label>
-        <label for="wesh3">
-            Check 3:
-            <input type="checkbox" name="wesh3" id="wesh3">
-        </label>
-    </fieldset>
+    {{ form_row(form.jeux) }}
     <button class="btn">Envoyer</button>
     {{ form_end(form) }}
 
