@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class UserType extends AbstractType
@@ -31,7 +32,9 @@ class UserType extends AbstractType
                     new Callback([$this, 'validate'])
                 )
             ))
-            ->add('txt_profil')
+            ->add('txt_profil', TextareaType::class, [
+                'required' => false,
+            ])
             ->add('jeux', EntityType::class, [
                 'mapped' => false,
                 'class' => Jeu::class,

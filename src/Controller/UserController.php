@@ -41,6 +41,12 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
+            $user = $form->getData();
+
+            $ville = $form->get('ville')->getData();
+            $coordonnees = $generateurCoordonnees->generer($ville);
+            $user->setCoordonnees($coordonnees);
+
             // $jeux = $form->get('jeux')->getData();
             // foreach ($jeux as $jeu) {
             //     $userJeu = new UserJeu();
@@ -49,15 +55,6 @@ class UserController extends AbstractController
             //         ->setJeu($jeu);
             //     $entityManager->persist($userJeu);
             // }
-
-            $user = $form->getData();
-
-            $ville = $form->get('ville')->getData();
-            $coordonnees = $generateurCoordonnees->generer($ville);
-            $user->setCoordonnees($coordonnees);
-
-            // dump($user);
-            // exit;
 
             $entityManager->persist($user);
             $entityManager->flush();

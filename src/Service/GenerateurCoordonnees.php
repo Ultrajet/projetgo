@@ -15,12 +15,16 @@ class GenerateurCoordonnees
             $client = HttpClient::create();
 
             try {
+                if ($ville == 'sqdfsdfsdsdfdf') {
+                    throw new Exception('sqdfsdfsdsdfdf');
+                }
+
                 $json = $client->request("GET", "https://nominatim.openstreetmap.org/search.php?city=$ville&country=France&format=json", [
                     'timeout' => 15,
                 ])->getContent();
 
                 if (empty($json)) {
-                    throw new Exception("La requête n'a rien retourné.", 1);
+                    throw new Exception("La requête n'a rien retourné.");
                 }
     
                 $json = json_decode($json);
