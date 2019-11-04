@@ -20,6 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Throwable;
 
 class RegistrationFormType extends AbstractType
 {
@@ -100,10 +101,11 @@ class RegistrationFormType extends AbstractType
         if (!is_null($data)) {
             $generateurCoordonnees = new GenerateurCoordonnees;
 
-            $output = $generateurCoordonnees->generer($data);
-
-            if (!is_array($output)) {
-                $context->buildViolation($output)
+            try {
+                $generateurCoordonnees->generer($data);
+            }
+            catch (Throwable $e) {
+                $context->buildViolation($e->getMessage())
                     ->atPath('ville')
                     ->addViolation();
             }

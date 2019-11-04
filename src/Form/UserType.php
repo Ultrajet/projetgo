@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Jeu;
 use App\Entity\User;
 use App\Service\GenerateurCoordonnees;
+use Exception;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -52,10 +53,14 @@ class UserType extends AbstractType
         if (!is_null($data)) {
             $generateurCoordonnees = new GenerateurCoordonnees;
 
-            $output = $generateurCoordonnees->generer($data);
-
-            if (!is_array($output)) {
-                $context->buildViolation($output)
+            try {
+                $generateurCoordonnees->generer($data);
+            } catch (TransportExceptionInterface $e) {
+                $context->buildViolation($e->getMessage())
+                    ->atPath('ville')
+                    ->addViolation();
+            } catch (Exception $e) {
+                $context->buildViolation($e->getMessage())
                     ->atPath('ville')
                     ->addViolation();
             }
