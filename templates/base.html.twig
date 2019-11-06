@@ -77,6 +77,18 @@
     </nav>
 
     <main>
+        {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message | raw }}
+        </div>
+        {% endfor %}
+
+        {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ message | raw }}
+        </div>
+        {% endfor %}
+
         <h1 class="logo display-1 text-center"><span class="w">W</span>alk <span class="and">&</span><img
                 src="{{ asset('images/PROJET_GO_LOGO_&.png') }}" alt="logo" class=""> <span class="m">M</span>eet</h1>
 
