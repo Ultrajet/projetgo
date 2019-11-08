@@ -14,12 +14,9 @@ main {
     text-decoration: underline #2C698D;
 }
 
-.form-group {
-    margin-top: 3rem !important;
-}
-
 form {
     display: flex;
     justify-content: center;
     color: dimgrey;
+    margin: 2rem 0 0.5rem;
 }
