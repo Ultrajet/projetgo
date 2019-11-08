@@ -15,7 +15,8 @@ class ContactController extends AbstractController{
      */
     public function formulaire(Request $request)
     {
-        $form = $this->createForm(ContactType::class, null);
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
         $form -> handleRequest($request);
 
             //Traitement des infos du formulaire
