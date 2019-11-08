@@ -37,11 +37,11 @@
 
         <!--BOUTON ME GEOLOCALISER-->
         <button type="button" class="geoloc btn btn-lg btn-block mb-4 mx-auto">
-            <a href="#">GEOLOCALISEZ-VOUS</a>
+            <a href="{{path('geoloc')}}">GEOLOCALISEZ-VOUS</a>
         </button>
 
         <!--CARROUSEL PRESENTATION DES JEUX-->
-        <h4 class="titre text-center mt-5 mb-3">Les jeux présent sur notre appli !</h4>
+        <h4 class="titre text-center mt-5 mb-3">Les jeux présents sur notre appli !</h4>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -77,7 +77,7 @@
                     <div class="card mb-3">
                         <img src="{{ asset('images/harry_potter_wizards_unite.jpg') }}" class="card-img-top" alt="ingress">
                         <div class="card-body w-100 text-center">
-                            <h5 class="card-title font-weight-bolder">WIZARDS UNIT</h5>
+                            <h5 class="card-title font-weight-bolder">WIZARDS UNITE</h5>
                             <p class="card-text">Pour les fans de l'univers de JK ROWLING.</p>
                             <a class="card-text" href="https://www.harrypotterwizardsunite.com/fr/">
                                 <small class="text-muted">Visitez le site</small>
@@ -90,7 +90,7 @@
                         <img src="{{ asset('images/minecraft_earth.jpg') }}" class="card-img-top" alt="ingress">
                         <div class="card-body w-100 text-center">
                             <h5 class="card-title font-weight-bolder">MINECRAFT EARTH</h5>
-                            <p class="card-text">Pour Bientôt. Les pré-réservation sont ouvertes.</p>
+                            <p class="card-text">Pour bientôt : les pré-réservations sont ouvertes.</p>
                             <a class="card-text" href="https://www.minecraft.net/fr-fr/earth">
                                 <small class="text-muted">Visitez le site</small>
                             </a>
@@ -112,7 +112,8 @@
             <h4 class="text-center font-weight-bold pb-2">CHANGELOG</h4>
             <div class="card_changelog mx-auto">
                 <h1 class="text-center">PHASE 1</h1>
-                <div class="text text-center">Lancement de la version Bêta de WALK & MEET.
+                <div class="small" style="text-align: center;">08/11/19</div>
+                <div class="text text-center">Lancement de la version alpha de WALK & MEET.
                     <br>
                     Nous attendons vos retours pour des améliorations.
                 </div>

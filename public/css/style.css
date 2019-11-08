@@ -167,7 +167,6 @@ main .logo img {
 
 .card_changelog {
     width: 35%;
-    height: 20vh;
     border: 3px solid;
     border-image: linear-gradient( rgba(44, 105, 141, 0.88), rgba(44, 105, 141, 0.37));
     border-image-slice: 1;
@@ -536,7 +535,6 @@ thead {
     /* ---- CHANGELOG ---- */
     .card_changelog {
         width: 24%;
-        height: 33vh;
         border: 6px solid;
         border-image: linear-gradient( rgba(44, 105, 141, 0.88), rgba(44, 105, 141, 0.37));
         border-image-slice: 1;

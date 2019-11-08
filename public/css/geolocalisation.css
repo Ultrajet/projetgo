@@ -4,20 +4,21 @@ main {
 
 #mapid {
     height: 80vh;
+    width: 90vw;
     margin: 0 auto;
+    margin-bottom: 1rem;
 }
 
-.col-form-label{
+.col-form-label {
     color: dimgrey;
     text-decoration: underline #2C698D;
 }
 
-.form-group{
-    margin-bottom: 1.5rem !important;
+.form-group {
     margin-top: 3rem !important;
 }
 
-form{
+form {
     display: flex;
     justify-content: center;
     color: dimgrey;
