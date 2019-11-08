@@ -1,14 +1,14 @@
 {% extends "base.html.twig" %}
 
 
-    {% block title %}Walk and Meet - Formulaire de contact{% endblock %}
+{% block title %}Walk and Meet - Formulaire de contact{% endblock %}
 
 
 {% block body %}
 <div class="container contact">
     <h2 class="text-uppercase text-center pb-3">Nous contacter</h2>
     <form class="">
-    {{ form_start(form) }}
+        {{ form_start(form) }}
         <div class="form-group">
             {{ form_row(form.username) }}
         </div>
@@ -22,7 +22,7 @@
             {{ form_row(form.message) }}
         </div>
         <button type="submit" class="btn">Envoyer le message</button>
-    {{ form_end(form) }}
+        {{ form_end(form) }}
     </form>
 </div>
 {% endblock %}

@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -14,13 +15,7 @@ class ContactType extends AbstractType{
     {
         $builder
             ->add('username', TextType::class)
-            ->add('email', TextType::class, array(
-                'constraints' => array(
-                    new Assert\Email(array(
-                        'message' => '{{ value }} n\'est pas un email valide'
-                    ))
-                )
-            ))
+            ->add('email', TextType::class)
             ->add('objet', TextType::class)
             ->add('message', TextareaType::class);
     }
