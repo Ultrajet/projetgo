@@ -4,7 +4,8 @@ namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class Contact {
+class Contact
+{
 
     /**
      * @var string|null
@@ -17,7 +18,8 @@ class Contact {
      * Getter for Username
      * @return[type]
      */
-    public function getUsername(){
+    public function getUsername()
+    {
         return $this->username;
     }
 
@@ -26,7 +28,8 @@ class Contact {
      * @var [type] username
      * @return self
      */
-    public function setUsername($username){
+    public function setUsername($username)
+    {
         $this->username = $username;
         return $this;
     }
@@ -42,7 +45,8 @@ class Contact {
      * Getter for Email
      * @return[type]
      */
-    public function getEmail(){
+    public function getEmail()
+    {
         return $this->email;
     }
 
@@ -51,7 +55,8 @@ class Contact {
      * @var [type] email
      * @return self
      */
-    public function setEmail($email){
+    public function setEmail($email)
+    {
         $this->email = $email;
         return $this;
     }
@@ -67,7 +72,8 @@ class Contact {
      * Getter for Objet
      * @return[type]
      */
-    public function getObjet(){
+    public function getObjet()
+    {
         return $this->objet;
     }
 
@@ -76,7 +82,8 @@ class Contact {
      * @var [type] objet
      * @return self
      */
-    public function setObjet($objet){
+    public function setObjet($objet)
+    {
         $this->objet = $objet;
         return $this;
     }
@@ -92,7 +99,8 @@ class Contact {
      * Getter for Message
      * @return[type]
      */
-    public function getMessage(){
+    public function getMessage()
+    {
         return $this->message;
     }
 
@@ -101,7 +109,8 @@ class Contact {
      * @var [type] message
      * @return self
      */
-    public function setMessage($message){
+    public function setMessage($message)
+    {
         $this->message = $message;
         return $this;
     }
