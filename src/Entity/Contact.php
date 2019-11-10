@@ -8,9 +8,9 @@ class Contact
 {
 
     /**
-     * @var string|null
-     * @Assert\NotBlank()
-     * @Assert\Length(min=2, max=100)
+     * @var string|null //Chaîne de charactère ou null par défault
+     * @Assert\NotBlank() //Champ non vide
+     * @Assert\Length(min=2, max=100) //Longeur minimum et maximum autoriser
      */
     private $username;
 
