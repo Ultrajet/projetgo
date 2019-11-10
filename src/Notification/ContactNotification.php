@@ -4,7 +4,7 @@ namespace App\Notification;
 
 use Twig\Environment;
 use App\Entity\Contact;
-use App\Notification\ContactNotification;
+//use App\Notification\ContactNotification;
 
 class ContactNotification {
 
