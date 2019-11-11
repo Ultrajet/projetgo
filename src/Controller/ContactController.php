@@ -26,18 +26,19 @@ class ContactController extends AbstractController
         {
             // Notifie ce contact et tu t'occupes de la partie traitement
             // Permet de faciliter les tests
-            //$notification->notify($contact); 
+            //$notification->notify($contact);
 
             //Permet de récupérer toutes les données du formulaire
-            $dataContact = $form -> getData();
+            $data = $form->getData();
 
-            if($this -> sendEmail($dataContact, $mailer)){
-                $this -> addFlash('success', 'Votre email à bien été envoyer, nous vous répondrons au plus vite.'); // Message de validation de l'envoi du mail
+            if ($this->sendEmail($data, $mailer)) {
+                $this->addFlash('success', 'Votre email à bien été envoyer, nous vous répondrons au plus vite.'); // Message de validation de l'envoi du mail
                 return $this->redirectToRoute("accueil"); // Chemin de redirection suite à un traitement correcte du mail
-            }else{
-                $this -> addFlash('errors', 'Un problème est survenue lors de l\'envoie de votre email, veuillez ré-essayer plus tard');
+            } else {
+                $this->addFlash('errors', 'Un problème est survenue lors de l\'envoie de votre email, veuillez ré-essayer plus tard');
             }
         }
+
         return $this->render('contact.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -45,23 +46,24 @@ class ContactController extends AbstractController
 
 
     /**
-    * Permet d'envoyer des emails
-    */
-    public function sendEmail($dataContact, \Swift_Mailer $mailer){
+     * Permet d'envoyer des emails
+     */
+    public function sendEmail($data, \Swift_Mailer $mailer)
+    {
         $mail = new \Swift_Message();
         // On instancie un objet swiftmailer en précisant l'objet (sujet) du mail.
-    
+
         $mail
-            -> setSubject($dataContact['objet'])
-            -> setFrom($dataContact['email'])
-            -> setTo('sylviemorin82@gmail.com')
-            -> setBody($this -> renderView('emails/contacts.html.twig', [
-                'data' => $dataContact
+            ->setSubject($data['objet'])
+            ->setFrom($data['email'])
+            ->setTo('contact@walkandmeet.com')
+            ->setBody($this->renderView('emails/contacts.html.twig', [
+                'data' => $data
             ]), 'text/html');
-    
-        if($mailer -> send($mail)){
+
+        if ($mailer->send($mail)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
