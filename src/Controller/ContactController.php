@@ -15,10 +15,10 @@ class ContactController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function formulaire(Request $request, ContactNotification $notification)
+    public function formulaire(Request $request, \Swift_Mailer $mailer, ContactNotification $notification)
     {
-        $contact = new Contact();
-        $form = $this->createForm(ContactType::class, $contact);
+        //$contact = new Contact();
+        $form = $this->createForm(ContactType::class, null);
         $form->handleRequest($request); //Gère la requête
 
         //Traitement des infos du formulaire
@@ -29,9 +29,9 @@ class ContactController extends AbstractController
             //$notification->notify($contact); 
 
             //Permet de récupérer toutes les données du formulaire
-            $data = $form -> getData();
+            $dataContact = $form -> getData();
 
-            if($this -> sendEmail($data, $mailer)){
+            if($this -> sendEmail($dataContact, $mailer)){
                 $this -> addFlash('success', 'Votre email à bien été envoyer, nous vous répondrons au plus vite.'); // Message de validation de l'envoi du mail
                 return $this->redirectToRoute("accueil"); // Chemin de redirection suite à un traitement correcte du mail
             }else{
@@ -47,16 +47,16 @@ class ContactController extends AbstractController
     /**
     * Permet d'envoyer des emails
     */
-    public function sendEmail($data, \Swift_Mailer $mailer){
+    public function sendEmail($dataContact, \Swift_Mailer $mailer){
         $mail = new \Swift_Message();
         // On instancie un objet swiftmailer en précisant l'objet (sujet) du mail.
     
         $mail
-            -> setSubject($data['objet'])
-            -> setFrom($data['email'])
-            -> setTo('contact@walkandmeet.com')
+            -> setSubject($dataContact['objet'])
+            -> setFrom($dataContact['email'])
+            -> setTo('sylviemorin82@gmail.com')
             -> setBody($this -> renderView('emails/contacts.html.twig', [
-                'data' => $data
+                'data' => $dataContact
             ]), 'text/html');
     
         if($mailer -> send($mail)){
