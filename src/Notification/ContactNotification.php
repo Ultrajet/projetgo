@@ -23,6 +23,7 @@ class ContactNotification {
         $this->renderer = $renderer;
     }
     
+    //Traitement des données brut dans le template des emails
     public function notify(Contact $contact){
         $message = (new \Swift_Message('Contact')) //Génére un message
             ->setFrom($contact->getEmail()) // L'email viend du site

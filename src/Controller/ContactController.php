@@ -39,6 +39,7 @@ class ContactController extends AbstractController
             }
         }
 
+        // Renvoie le formulaire dans ma vue
         return $this->render('contact.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -47,6 +48,7 @@ class ContactController extends AbstractController
 
     /**
     * Permet d'envoyer des emails
+    * Affiche des données brut
     */
     public function sendEmail($data, \Swift_Mailer $mailer)
     {

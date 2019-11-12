@@ -1,7 +1,7 @@
 swiftmailer:
     transport:      gmail
-    username:       sylviemorin82@gmail.com
-    password:       Makoto666
+    username:       test.mbmp@gmail.com
+    password:       Test123!
     host:           localhost:8888
     port:           465
     encryption:     ssl
