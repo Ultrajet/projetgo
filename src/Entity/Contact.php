@@ -4,10 +4,10 @@ namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class Contact
-{
+class Contact {
 
     /**
+    * Typage de la propriété 
     * @var string|null
     * @Assert\NotBlank()
     * @Assert\Length(min=5, max=100)

@@ -14,6 +14,7 @@ class ContactType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options) 
     {
         $builder
+        // Ici nous précissons les types de donnée de chaque champ
             ->add('username', TextType::class)
             ->add('email', EmailType::class)
             ->add('objet', TextType::class)
@@ -23,6 +24,7 @@ class ContactType extends AbstractType{
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
+            // Le formualire est en _POST
             'data_class' => Contact::class
         ]);
     }
